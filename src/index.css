@@ -53,3 +53,9 @@
   color: #358df1;
   margin-bottom: 8px;
 }
+
+.loading {
+  padding: 1rem;
+  margin: 0 auto;
+  text-align: center;
+}
