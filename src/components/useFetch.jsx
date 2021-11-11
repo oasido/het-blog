@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const useFetch = (url) => {
-  const [data, setData] = useState('');
+  const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const useFetch = (url) => {
           setIsLoading(false);
         })
         .catch((err) => {
-          // console.log(err.message);
+          console.log(err.message);
         });
     }, 1000);
 
