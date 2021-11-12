@@ -1,11 +1,21 @@
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import useFetch from './useFetch';
 import ReactLoading from 'react-loading';
 import NotFound from './NotFound';
 
 const BlogItself = () => {
   const { id } = useParams();
-  const { data: blog, isLoading } = useFetch('http://localhost:8000/blogs/' + id);
+  const { data: blog, isLoading, error } = useFetch('http://localhost:8000/blogs/' + id);
+  const navigate = useNavigate();
+
+  const handleDelete = () => {
+    fetch('http://localhost:8000/blogs/' + id, {
+      method: 'DELETE',
+    }).then(() => {
+      console.log('erase method sent');
+      navigate('/');
+    });
+  };
 
   return (
     <div>
@@ -21,6 +31,7 @@ const BlogItself = () => {
           <article>
             <h2>{blog.title}</h2>
             <p>{blog.body}</p>
+            <button onClick={handleDelete}>Delete Blog</button>
           </article>
         )}
       </div>

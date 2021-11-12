@@ -73,6 +73,15 @@
 .blog-details div {
   margin: 20px 0;
 }
+.blog-details button {
+  background: #216dc4;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  margin: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
 /* create new blog form */
 .create {
