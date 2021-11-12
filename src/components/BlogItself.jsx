@@ -1,6 +1,7 @@
 import { useParams } from 'react-router';
 import useFetch from './useFetch';
 import ReactLoading from 'react-loading';
+import NotFound from './NotFound';
 
 const BlogItself = () => {
   const { id } = useParams();
@@ -8,6 +9,7 @@ const BlogItself = () => {
 
   return (
     <div>
+      {error && <NotFound />}
       {isLoading && (
         <div>
           <ReactLoading className="loading" color="#000" type="spin" />
