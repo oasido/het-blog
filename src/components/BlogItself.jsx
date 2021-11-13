@@ -30,7 +30,7 @@ const BlogItself = () => {
         {blog && (
           <article>
             <h2>{blog.title}</h2>
-            <p>{blog.body}</p>
+            <p className="line-break">{blog.body}</p>
             <button onClick={handleDelete}>Delete Blog</button>
           </article>
         )}

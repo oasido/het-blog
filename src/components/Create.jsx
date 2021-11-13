@@ -8,7 +8,7 @@ const Create = () => {
   const [isAddingBlog, setIsAddingBlog] = useState(false);
   const navigate = useNavigate();
 
-  function handleAddBlog(e) {
+  const handleAddBlog = (e) => {
     e.preventDefault();
     setIsAddingBlog(true);
     const blog = { title, body, author };
@@ -21,7 +21,7 @@ const Create = () => {
       setIsAddingBlog(false);
       navigate('/');
     });
-  }
+  };
 
   return (
     <div className="create">

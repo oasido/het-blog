@@ -13,6 +13,7 @@
   max-width: 600px;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
+  white-space: nowrap;
 }
 .navbar h1 {
   color: #216dc4;
@@ -25,9 +26,7 @@
   text-decoration: none;
   padding: 6px;
 }
-.navbar a:hover {
-  color: #216dc4;
-}
+
 .navbar .inverted {
   color: white;
   background-color: #216dc4;
@@ -115,4 +114,41 @@
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
+}
+
+/* LoginOrRegister component */
+
+.form-container {
+  display: grid;
+  place-items: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form-field {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 200;
+  background-color: #ecf0f1;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  padding: 10px 0;
+  width: 300px;
+  transition: border 0.5s;
+  margin: 5px;
+}
+
+.button {
+  background-color: rgb(2, 190, 2);
+  font-size: 1rem;
+}
+
+.button:hover {
+  background-color: rgb(2, 168, 2);
+  cursor: pointer;
+}
+
+.line-break {
+  white-space: pre-wrap;
 }
