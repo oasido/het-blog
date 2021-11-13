@@ -4,9 +4,13 @@ function Navbar() {
   return (
     <div className="Navbar">
       <nav className="navbar">
-        <h1>React Blog</h1>
+        <Link to="/">
+          <h1>React Blog</h1>
+        </Link>
+
         <div className="links">
-          <Link to="/">Home</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
           <Link to="/create" className="inverted">
             New Blog
           </Link>
