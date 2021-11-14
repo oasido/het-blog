@@ -3,6 +3,7 @@ import { useState } from 'react';
 const Register = (props) => {
   const [user, setUser] = useState({
     username: '',
+    email: '',
     password: '',
     confirmPassword: '',
   });
@@ -14,18 +15,28 @@ const Register = (props) => {
       if (name === 'username') {
         return {
           username: value,
+          email: previousValue.email,
+          password: previousValue.password,
+          confirmPassword: previousValue.confirmPassword,
+        };
+      } else if (name === 'email') {
+        return {
+          username: previousValue.username,
+          email: value,
           password: previousValue.password,
           confirmPassword: previousValue.confirmPassword,
         };
       } else if (name === 'password') {
         return {
           username: previousValue.username,
+          email: previousValue.email,
           password: value,
           confirmPassword: previousValue.confirmPassword,
         };
       } else if (name === 'confirmPassword') {
         return {
           username: previousValue.username,
+          email: previousValue.email,
           password: previousValue.password,
           confirmPassword: value,
         };
