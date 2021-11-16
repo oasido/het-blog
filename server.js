@@ -3,8 +3,12 @@ const mongoose = require('mongoose');
 var passport = require('passport');
 const Blog = require('./models/Blog.js');
 const User = require('./models/User.js');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const app = express();
 const port = 3080;
+
+app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -26,15 +30,9 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.post('/register', async (req, res) => {
-  try {
-    const { username, email, password, confirmPassword } = req.body;
-    if (password !== confirmPassword) {
-      res.send('NO_MATCH'); // TODO: Figure out how to send messages to the Front End, without refreshing the page
-    }
-  } catch (error) {
-    console.log(error);
-  }
+app.post('/register', (req, res) => {
+  const { username, email, password, confirmPassword } = req.body;
+  User.register(new User({ username, email }), password, (err) => console.log(err));
 });
 
 app.listen(port, () => {
