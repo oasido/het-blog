@@ -3,7 +3,7 @@ import useFetch from './useFetch';
 import ReactLoading from 'react-loading';
 import NotFound from './NotFound';
 
-const BlogItself = () => {
+const BlogItself = (props) => {
   const { id } = useParams();
   const { data: blog, isLoading, error } = useFetch('http://localhost:8000/blogs/' + id);
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const BlogItself = () => {
           <article>
             <h2>{blog.title}</h2>
             <p className="line-break">{blog.body}</p>
-            <button onClick={handleDelete}>Delete Blog</button>
+            {props.Authenticated && <button onClick={handleDelete}>Delete Blog</button>}
           </article>
         )}
       </div>

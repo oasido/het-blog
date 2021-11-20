@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Create = () => {
+const Create = ({ isLoggedIn }) => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [author, setAuthor] = useState('');
   const [isAddingBlog, setIsAddingBlog] = useState(false);
   const navigate = useNavigate();
+
+  if (!isLoggedIn) {
+    window.location.href = '/';
+  }
 
   const handleAddBlog = (e) => {
     e.preventDefault();
