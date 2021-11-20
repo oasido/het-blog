@@ -28,6 +28,14 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.get('/api/session', async (req, res) => {
+  if (await req.isAuthenticated()) {
+    res.send({ username: req.user.username, email: req.user.email, isAuthenticated: req.isAuthenticated() });
+  } else {
+    res.send({ isAuthenticated: false });
+  }
+});
+
 app.post('/register', (req, res) => {
   const { username, email, password, confirmPassword } = req.body;
   User.register(new User({ username, email }), password, (err) => console.log(err));
