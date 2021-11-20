@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import FlashMsg from './FlashMsg';
 
 const Register = (props) => {
   const [user, setUser] = useState({
@@ -44,16 +45,22 @@ const Register = (props) => {
     });
   };
 
-  const handleRegisterSubmit = (e) => {
+  // Error handling
+  const [errorMessage, setErrorMessage] = useState(null);
+  const handleRegisterSubmit = async (e) => {
+    setErrorMessage(null);
     e.preventDefault();
-    console.log('registerLogin');
-    fetch('/register', {
+    const response = await fetch('/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(user),
     });
+    const body = await response.json();
+    if (body.error) {
+      setErrorMessage(body.error.message);
+    }
   };
 
   return (
@@ -68,10 +75,10 @@ const Register = (props) => {
         <input name="password" className="form-field" type="password" placeholder="password" value={user.password} onChange={handleChange} />
 
         <input name="confirmPassword" className="form-field" type="password" placeholder="confirm password" value={user.confirmPassword} onChange={handleChange} />
-
         <button type="submit" className="form-field button">
           register
         </button>
+        {errorMessage && <FlashMsg message={errorMessage} />}
       </div>
     </form>
   );

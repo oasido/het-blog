@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import FlashMsg from './FlashMsg';
 
 const Login = (props) => {
   const [user, setUser] = useState({
@@ -26,8 +27,23 @@ const Login = (props) => {
     });
   };
 
-  const handleLogin = () => {
-    console.log('handleLogin');
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const handleLogin = async (e) => {
+    setErrorMessage(null);
+    e.preventDefault();
+    const response = await fetch('/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    });
+    if ((await response.status) === 200) {
+      window.location.href = '/';
+    } else {
+      setErrorMessage('Invalid username or password');
+    }
   };
 
   return (
@@ -40,6 +56,7 @@ const Login = (props) => {
         <input name="password" className="form-field" type="password" placeholder="password" value={user.password} onChange={handleChange} />
 
         <button className="form-field button">login</button>
+        <FlashMsg message={errorMessage} />
       </div>
     </form>
   );
