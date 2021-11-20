@@ -31,7 +31,7 @@ const BlogItself = (props) => {
           <article>
             <h2>{blog.title}</h2>
             <p className="line-break">{blog.body}</p>
-            {props.Authenticated && <button onClick={handleDelete}>Delete Blog</button>}
+            {props.isLoggedIn && <button onClick={handleDelete}>Delete Blog</button>}
           </article>
         )}
       </div>
