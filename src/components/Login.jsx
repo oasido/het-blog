@@ -15,13 +15,11 @@ const Login = (props) => {
         return {
           username: value,
           password: previousValue.password,
-          confirmPassword: previousValue.confirmPassword,
         };
       } else if (name === 'password') {
         return {
           username: previousValue.username,
           password: value,
-          confirmPassword: previousValue.confirmPassword,
         };
       }
     });
