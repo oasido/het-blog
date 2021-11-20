@@ -9,23 +9,21 @@ const app = express();
 const port = 3080;
 
 app.use(cookieParser());
-
+app.use(passport.initialize());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(
+  session({
+    secret: 'secretcode',
+    resave: true,
+    saveUninitialized: true,
+  })
+);
 
 mongoose.connect('mongodb://localhost/reactblog').catch((err) => console.log(err.reason));
 
-app.get('/ping', async (req, res) => {
-  try {
-    res.send('Pong!');
-    const blog = await Blog.create({ title: 'yo', author: 'this is a body', body: 'i did it' });
-    console.log('aye');
-  } catch (error) {
-    console.log(error);
-  }
-});
-
 // Passport-local-mongoose
+app.use(passport.session());
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
