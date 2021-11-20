@@ -38,7 +38,17 @@ app.get('/api/session', async (req, res) => {
 
 app.post('/register', (req, res) => {
   const { username, email, password, confirmPassword } = req.body;
-  User.register(new User({ username, email }), password, (err) => console.log(err));
+  if (password !== confirmPassword) {
+    res.send({ error: { name: 'PassNoMatch', message: 'Passwords do not match' } });
+  } else if (password === confirmPassword) {
+    User.register(new User({ username, email }), password, (err) => {
+      res.send({ error: { err } });
+    });
+  }
+});
+
+app.post('/login', passport.authenticate('local'), (req, res) => {
+  res.send({ username: req.user.username });
 });
 
 app.listen(port, () => {
