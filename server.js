@@ -51,6 +51,11 @@ app.post('/login', passport.authenticate('local'), (req, res) => {
   res.send({ username: req.user.username });
 });
 
+app.post('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
+
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });

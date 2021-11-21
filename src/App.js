@@ -1,4 +1,4 @@
-// TODO: Add logout route
+// DONE: Add logout route
 // TODO: Connect everything to MongoDB instead of json-server
 
 import { useEffect, useState } from 'react';
@@ -10,6 +10,7 @@ import BlogItself from './components/BlogItself';
 import NotFound from './components/NotFound';
 import Register from './components/Register';
 import Login from './components/Login';
+import Logout from './components/Logout';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -44,6 +45,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/create" element={<Create isLoggedIn={isLoggedIn} />} />
             <Route exact path="/login" element={<Login isLoggedIn={isLoggedIn} />} />
+            <Route exact path="/logout" element={<Logout isLoggedIn={isLoggedIn} />} />
             <Route exact path="/register" element={<Register isLoggedIn={isLoggedIn} />} />
             <Route path="/blogs/:id" element={<BlogItself isLoggedIn={isLoggedIn} />} />
             <Route path="*" element={<NotFound />} />
