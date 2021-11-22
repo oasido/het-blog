@@ -3,7 +3,11 @@ import BlogList from './BlogList';
 import useFetch from './useFetch';
 
 function Home() {
-  const { data: blogs, isLoading } = useFetch('http://localhost:8000/blogs');
+  let { data: blogs, isLoading } = useFetch('http://localhost:8000/blogs');
+
+  if ((blogs || []).length === 0) {
+    blogs = null;
+  }
 
   return (
     <div className="home">
@@ -14,6 +18,7 @@ function Home() {
         </div>
       )}
       {blogs && <BlogList blogs={blogs} title="All Blogs" />}
+      {!blogs && <p>There are currently no blogs available.</p>}
     </div>
   );
 }
