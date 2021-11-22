@@ -26,10 +26,8 @@ function App() {
         .then((data) => {
           if (data.isAuthenticated) {
             setIsLoggedIn(true);
-            console.log('logged in');
           } else {
             setIsLoggedIn(false);
-            console.log('logged off');
           }
         });
     };

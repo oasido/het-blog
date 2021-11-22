@@ -21,7 +21,6 @@ const Create = ({ isLoggedIn }) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(blog),
     }).then(() => {
-      console.log('posted');
       setIsAddingBlog(false);
       navigate('/');
     });

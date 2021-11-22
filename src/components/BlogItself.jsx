@@ -12,7 +12,6 @@ const BlogItself = (props) => {
     fetch('http://localhost:8000/blogs/' + id, {
       method: 'DELETE',
     }).then(() => {
-      console.log('erase method sent');
       navigate('/');
     });
   };
