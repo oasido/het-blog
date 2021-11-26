@@ -13,7 +13,7 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState({ isAuthenticated: false });
 
   useEffect(() => {
     const loginCheckFetch = () => {
@@ -23,29 +23,25 @@ function App() {
         },
       })
         .then((response) => response.json())
-        .then((data) => {
-          if (data.isAuthenticated) {
-            setIsLoggedIn(true);
-          } else {
-            setIsLoggedIn(false);
-          }
-        });
+        .then((data) => setUser(data));
+      return user;
     };
     loginCheckFetch();
+    // eslint-disable-next-line
   }, []);
 
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar isLoggedIn={isLoggedIn} />
+        <Navbar user={user} />
         <div className="content">
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route exact path="/create" element={<Create isLoggedIn={isLoggedIn} />} />
-            <Route exact path="/login" element={<Login isLoggedIn={isLoggedIn} />} />
-            <Route exact path="/logout" element={<Logout isLoggedIn={isLoggedIn} />} />
-            <Route exact path="/register" element={<Register isLoggedIn={isLoggedIn} />} />
-            <Route path="/blogs/:id" element={<BlogItself isLoggedIn={isLoggedIn} />} />
+            <Route exact path="/create" element={<Create user={user} />} />
+            <Route exact path="/login" element={<Login user={user} />} />
+            <Route exact path="/logout" element={<Logout user={user} />} />
+            <Route exact path="/register" element={<Register user={user} />} />
+            <Route path="/blogs/:id" element={<BlogItself user={user} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

@@ -1,5 +1,6 @@
-const Logout = ({ isLoggedIn }) => {
-  if (isLoggedIn) {
+const Logout = ({ user }) => {
+  const { isAuthenticated } = user;
+  if (isAuthenticated) {
     const postLogoutRequest = async () => {
       await fetch('/logout', {
         method: 'POST',
