@@ -6,11 +6,19 @@
   font-family: 'Quicksand';
   color: #333;
 }
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+a {
+  text-decoration: none;
+}
 .navbar {
   padding: 20px;
   display: flex;
   align-items: center;
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
   white-space: nowrap;
@@ -21,19 +29,22 @@
 .navbar .links {
   margin-left: auto;
 }
-.navbar a {
-  margin-left: 16px;
+.navbar span {
+  /* margin-left: 16px; */
   text-decoration: none;
   padding: 6px;
+  /* padding: 6px; */
 }
 
 .navbar .inverted {
   color: white;
+  padding: 6px;
   background-color: #216dc4;
   border-radius: 8px;
+  margin: 0 0.5rem;
 }
 .content {
-  max-width: 600px;
+  max-width: 650px;
   margin: 40px auto;
   padding: 20px;
 }
@@ -151,4 +162,39 @@
 
 .line-break {
   white-space: pre-wrap;
+}
+
+/* dropdown navbar */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  /* min-width: 160px; */
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 0.7rem 0.5rem;
+  z-index: 1;
+  /* text-decoration: underline; */
+  font-weight: bold;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+  padding: 1rem;
+}
+
+.dropdown:hover .dropdown-content > * {
+  padding: 5px 0;
+}
+
+/* blog info */
+.blog-info {
+  text-align: right;
+  padding: 2rem;
 }
