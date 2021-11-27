@@ -16,8 +16,8 @@ const Create = ({ user }) => {
   const handleAddBlog = (e) => {
     e.preventDefault();
     setIsAddingBlog(true);
-    const blog = { title, body, author };
-    fetch('http://localhost:8000/blogs/', {
+    const blog = { title, body, author, email };
+    fetch('/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(blog),

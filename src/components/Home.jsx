@@ -1,9 +1,10 @@
+// import { useEffect } from 'react';
 import ReactLoading from 'react-loading';
 import BlogList from './BlogList';
 import useFetch from './useFetch';
 
 function Home() {
-  let { data: blogs, isLoading } = useFetch('http://localhost:8000/blogs');
+  let { data: blogs, isLoading } = useFetch('/api/blogs');
 
   if ((blogs || []).length === 0) {
     blogs = null;

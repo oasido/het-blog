@@ -7,12 +7,14 @@ const BlogItself = ({ user }) => {
   const { isAuthenticated, username, email } = user;
 
   const { id } = useParams();
-  const { data: blog, isLoading, error } = useFetch('http://localhost:3080/api/blogs/' + id);
+  const { data: blog, isLoading, error } = useFetch('/api/blogs/' + id);
   const navigate = useNavigate();
 
   const handleDelete = () => {
-    fetch('http://localhost:8000/blogs/' + id, {
-      method: 'DELETE',
+    fetch('/delete', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, username }),
     }).then(() => {
       navigate('/');
     });
