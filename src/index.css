@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-
 /* base styles */
 * {
   margin: 0;
-  font-family: 'Quicksand';
+  font-family: 'Zilla Slab', serif;
   color: #333;
 }
 html,
@@ -25,6 +23,7 @@ a {
 }
 .navbar h1 {
   color: #216dc4;
+  font-family: 'Zilla Slab Highlight', cursive;
 }
 .navbar .links {
   margin-left: auto;
