@@ -36,14 +36,52 @@ app.get('/api/session', async (req, res) => {
   }
 });
 
+app.get('/api/blogs', async (req, res) => {
+  try {
+    const formattedDate = new Date().toLocaleTimeString([], { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    const blogs = await Blog.find({});
+    res.send(blogs);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.get('/api/blogs/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const blog = await Blog.findById(id);
+    res.send(blog);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 app.post('/register', (req, res) => {
   const { username, email, password, confirmPassword } = req.body;
   if (password !== confirmPassword) {
     res.send({ error: { name: 'PassNoMatch', message: 'Passwords do not match' } });
   } else if (password === confirmPassword) {
     User.register(new User({ username, email }), password, (err) => {
-      res.send({ error: { err } });
-    });
+
+app.post('/create', async (req, res) => {
+  try {
+    const { title, body, author, email } = req.body;
+    const formattedDate = new Date().toLocaleTimeString([], { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    await Blog.create({ title, body, author, email, date: formattedDate });
+    res.json({ posted: true });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.post('/delete', async (req, res) => {
+  try {
+    const { id, username } = req.body;
+    console.log(username);
+    await Blog.findByIdAndDelete(id);
+    res.json({ deleted: true });
+  } catch (error) {
+    console.log(error);
   }
 });
 
