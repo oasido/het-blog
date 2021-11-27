@@ -1,5 +1,9 @@
-const FlashMsg = (props) => {
-  return <div className="flash-message">{props.message}</div>;
+const FlashMsg = ({ message, color }) => {
+  return (
+    <div className="flash-message" style={{ color: color, whiteSpace: 'pre-line', fontWeight: 'bold' }}>
+      {message}
+    </div>
+  );
 };
 
 export default FlashMsg;
