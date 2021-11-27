@@ -1,5 +1,7 @@
 // DONE: Add logout route
-// TODO: Connect everything to MongoDB instead of json-server
+// DONE: Connect everything to MongoDB instead of json-server
+// TODO: Reverse blogs so that new posts would be at the top
+// TODO: Add server side checks to see if a user tries to delete other users' posts, make sure deletion only works on his posts
 
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
