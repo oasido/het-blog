@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FlashMsg from './FlashMsg';
 
 const Register = (props) => {
-  const [user, setUser] = useState({
+  const navigate = useNavigate();
+  const [userFields, setUserFields] = useState({
     username: '',
     email: '',
     password: '',
@@ -12,7 +14,7 @@ const Register = (props) => {
   const handleChange = (event) => {
     const { value, name } = event.target;
 
-    setUser((previousValue) => {
+    setUserFields((previousValue) => {
       if (name === 'username') {
         return {
           username: value,
@@ -47,6 +49,7 @@ const Register = (props) => {
 
   // Error handling
   const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
   const handleRegisterSubmit = async (e) => {
     setErrorMessage(null);
     e.preventDefault();
@@ -55,30 +58,38 @@ const Register = (props) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify(userFields),
     });
     const body = await response.json();
     if (body.error) {
+      setSuccessMessage(null);
       setErrorMessage(body.error.message);
+    }
+    if (!body.error) {
+      setErrorMessage(null);
+      setSuccessMessage(`Sucessfully registered!
+      Redirecting you to login page...`);
+      setTimeout(() => navigate('/login'), 2000);
     }
   };
 
   return (
     <form onSubmit={handleRegisterSubmit}>
       <div className="form-container">
-        <h2>Register</h2>
+        {userFields.username ? <h2>Hello there, {userFields.username}</h2> : <h2>Hello there</h2>}
 
-        <input name="username" className="form-field" type="text" placeholder="user" value={user.username} onChange={handleChange} />
+        <input name="username" className="form-field" type="text" placeholder="user" value={userFields.username} onChange={handleChange} />
 
-        <input name="email" className="form-field" type="email" placeholder="email" value={user.email} onChange={handleChange} />
+        <input name="email" className="form-field" type="email" placeholder="email" value={userFields.email} onChange={handleChange} />
 
-        <input name="password" className="form-field" type="password" placeholder="password" value={user.password} onChange={handleChange} />
+        <input name="password" className="form-field" type="password" placeholder="password" value={userFields.password} onChange={handleChange} />
 
-        <input name="confirmPassword" className="form-field" type="password" placeholder="confirm password" value={user.confirmPassword} onChange={handleChange} />
+        <input name="confirmPassword" className="form-field" type="password" placeholder="confirm password" value={userFields.confirmPassword} onChange={handleChange} />
         <button type="submit" className="form-field button">
           register
         </button>
-        {errorMessage && <FlashMsg message={errorMessage} />}
+        {errorMessage && <FlashMsg color="red" message={errorMessage} />}
+        {successMessage && <FlashMsg color="green" message={successMessage} />}
       </div>
     </form>
   );

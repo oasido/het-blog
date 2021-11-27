@@ -2,7 +2,7 @@ import { useState } from 'react';
 import FlashMsg from './FlashMsg';
 
 const Login = (props) => {
-  const [user, setUser] = useState({
+  const [userFields, setUserFields] = useState({
     username: '',
     password: '',
   });
@@ -10,7 +10,7 @@ const Login = (props) => {
   const handleChange = (event) => {
     const { value, name } = event.target;
 
-    setUser((previousValue) => {
+    setUserFields((previousValue) => {
       if (name === 'username') {
         return {
           username: value,
@@ -35,7 +35,7 @@ const Login = (props) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify(userFields),
     });
     if ((await response.status) === 200) {
       window.location.href = '/';
@@ -47,11 +47,11 @@ const Login = (props) => {
   return (
     <form onSubmit={handleLogin}>
       <div className="form-container">
-        <h2>Login</h2>
+        {userFields.username ? <h2>Welcome back, {userFields.username}</h2> : <h2>Welcome back</h2>}
 
-        <input name="username" className="form-field" type="text" placeholder="user" value={user.username} onChange={handleChange} />
+        <input name="username" className="form-field" type="text" placeholder="user" value={userFields.username} onChange={handleChange} />
 
-        <input name="password" className="form-field" type="password" placeholder="password" value={user.password} onChange={handleChange} />
+        <input name="password" className="form-field" type="password" placeholder="password" value={userFields.password} onChange={handleChange} />
 
         <button className="form-field button">login</button>
         <FlashMsg message={errorMessage} />
