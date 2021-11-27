@@ -38,7 +38,6 @@ app.get('/api/session', async (req, res) => {
 
 app.get('/api/blogs', async (req, res) => {
   try {
-    const formattedDate = new Date().toLocaleTimeString([], { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
     const blogs = await Blog.find({});
     res.send(blogs);
   } catch (error) {
