@@ -29,25 +29,16 @@ const Create = ({ user }) => {
   return (
     <div className="create">
       <form onSubmit={handleAddBlog}>
-        <h2>Add a New Blog</h2>
+        <h2>Create A New Post</h2>
 
-        <label>Blog Title</label>
+        <label>Title</label>
         <input required value={title} onChange={(e) => setTitle(e.target.value)} />
 
-        <label>Blog Body</label>
-        <textarea required value={body} onChange={(e) => setBody(e.target.value)}></textarea>
+        <label>Body</label>
+        <textarea required rows="10" value={body} onChange={(e) => setBody(e.target.value)}></textarea>
 
-        <label>Blog Author</label>
-        <select required value={author} onChange={(e) => setAuthor(e.target.value)}>
-          <option disabled defaultValue value="">
-            Please select
-          </option>
-          <option value="Ofek">Ofek</option>
-          <option value="Dor">Dor</option>
-        </select>
-
-        {!isAddingBlog && <button type="submit">Add Blog</button>}
-        {isAddingBlog && <button type="submit">Adding Blog..</button>}
+        {!isAddingBlog && <button type="submit">Post</button>}
+        {isAddingBlog && <button type="submit">Posting...</button>}
       </form>
     </div>
   );
