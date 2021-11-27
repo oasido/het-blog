@@ -4,7 +4,7 @@ import ReactLoading from 'react-loading';
 import NotFound from './NotFound';
 
 const BlogItself = ({ user }) => {
-  const { isAuthenticated, username, email } = user;
+  const { isAuthenticated, username } = user;
 
   const { id } = useParams();
   const { data: blog, isLoading, error } = useFetch('/api/blogs/' + id);
