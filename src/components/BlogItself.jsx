@@ -38,7 +38,11 @@ const BlogItself = ({ user }) => {
               <p>Written by: {blog.author}</p>
               <p>Contact: {blog.email}</p>
             </div>
-            {isAuthenticated && <button onClick={handleDelete}>Delete Blog</button>}
+            {isAuthenticated && blog.author === username && (
+              <button className="background-danger" onClick={handleDelete}>
+                Remove
+              </button>
+            )}
           </article>
         )}
       </div>
