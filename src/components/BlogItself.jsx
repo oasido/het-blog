@@ -35,8 +35,8 @@ const BlogItself = ({ user }) => {
             <h2>{blog.title}</h2>
             <p className="line-break">{blog.body}</p>
             <div className="blog-info">
-              <p>Written by: {username}</p>
-              <p>Contact: {email}</p>
+              <p>Written by: {blog.author}</p>
+              <p>Contact: {blog.email}</p>
             </div>
             {isAuthenticated && <button onClick={handleDelete}>Delete Blog</button>}
           </article>
