@@ -62,6 +62,10 @@ app.post('/register', (req, res) => {
     res.send({ error: { name: 'PassNoMatch', message: 'Passwords do not match' } });
   } else if (password === confirmPassword) {
     User.register(new User({ username, email }), password, (err) => {
+      res.send({ error: err });
+    });
+  }
+});
 
 app.post('/create', async (req, res) => {
   try {
