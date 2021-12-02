@@ -18,7 +18,7 @@ function Home() {
           <div className="loading">Loading, please wait...</div>
         </div>
       )}
-      {blogs && <BlogList blogs={blogs} title="All Blogs" />}
+      {blogs && <BlogList blogs={blogs} />}
       {!blogs && <p>There are currently no blogs available.</p>}
     </div>
   );

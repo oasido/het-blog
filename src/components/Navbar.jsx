@@ -9,19 +9,27 @@ function Navbar({ user }) {
       <nav className="navbar">
         {/* <Link to="/"> */}
         <a href="/">
-          <h1>React Blog</h1>
+          <h1>HET BLOG</h1>
         </a>
 
         {/* </Link> */}
 
         <div className="links">
+          {isAuthenticated && (
+            <Link to="/create" className="inverted">
+              Create Post
+            </Link>
+          )}
           <div className="dropdown">
-            <span id="menu-text">Menu</span>
+            <span>{isAuthenticated ? <img className="user-avatar" src={profilePicture} alt="user avatar" /> : '☰'}</span>
             <div className="dropdown-content">
               {!isAuthenticated && <Link to="/login">Login</Link>}
               {!isAuthenticated && <Link to="/register">Register</Link>}
-              {isAuthenticated && <p>Hello, {username}</p>}
-              {isAuthenticated && <a href="/my-posts">My Posts</a>}
+              {isAuthenticated && <p>@{username}</p>}
+              {isAuthenticated && <div className="seperator" />}
+              {isAuthenticated && <Link to="/my-posts">My Posts</Link>}
+              {isAuthenticated && <Link to="/settings">Settings</Link>}
+              {isAuthenticated && <div className="seperator" />}
               {isAuthenticated && (
                 <a className="color-danger" href="/logout">
                   Log Out
@@ -29,11 +37,6 @@ function Navbar({ user }) {
               )}
             </div>
           </div>
-          {isAuthenticated && (
-            <Link to="/create" className="inverted">
-              Create Post
-            </Link>
-          )}
         </div>
       </nav>
     </div>

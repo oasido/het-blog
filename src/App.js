@@ -1,11 +1,14 @@
 // DONE: Add logout route
 // DONE: Connect everything to MongoDB instead of json-server
 // DONE: Reverse blogs so that new posts would be at the top
-// TODO: Add server side checks to see if a user tries to delete other users' posts, make sure deletion only works on his posts
+// DONE: Add server side checks to see if a user tries to delete other users' posts, make sure deletion only works on his posts
+// DONE: Add profile pictures
+// DONE: Beautify page
 // TODO: Add user settings page
 // TODO: Add commenting system
-// IDEA: Add markdown support for adding blogs.
 // MINOR: Add minimum user/password length
+// MINOR: Ternary operator if DB is off
+// IDEA: Add markdown support for adding blogs.
 // IDEA: Add profile page, pictures in blogs, user avatars
 
 import { useEffect, useState } from 'react';

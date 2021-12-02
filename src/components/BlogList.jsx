@@ -1,16 +1,21 @@
 import { Link } from 'react-router-dom';
 
-function BlogList({ blogs, title }) {
+function BlogList({ blogs }) {
   const reversedBlogs = [...blogs].reverse(); // New blogs show on top
   console.log(reversedBlogs);
   return (
     <div className="blog-list">
-      <h2>{title}</h2>
       {reversedBlogs.map((blog) => (
         <div className="blog-preview" key={blog._id}>
           <Link to={`/blogs/${blog._id}`}>
-            <h2>{blog.title}</h2>
-            <p>Written by {blog.author}</p>
+            <div className="top-bar">
+              <img className="author-picture" src="https://i.imgur.com/a3QC4si.png" alt="user avatar" />
+              <div>
+                <p className="author-text">{blog.author}</p>
+                <p className="time-posted">{blog.date}</p>
+              </div>
+            </div>
+            <h2 className="blog-title">{blog.title}</h2>
           </Link>
         </div>
       ))}
