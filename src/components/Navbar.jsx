@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 
 function Navbar({ user }) {
-  const { isAuthenticated, username } = user;
+  const { isAuthenticated, username, profilePicture } = user;
 
   return (
     <div className="Navbar">

@@ -30,12 +30,14 @@ passport.deserializeUser(User.deserializeUser());
 
 app.get('/api/session', async (req, res) => {
   if (await req.isAuthenticated()) {
-    res.send({ username: req.user.username, email: req.user.email, isAuthenticated: req.isAuthenticated() });
+    const { username, email, profilePicture } = req.user;
+    res.send({ username, email, profilePicture, isAuthenticated: req.isAuthenticated() });
   } else {
     res.send({ isAuthenticated: false });
   }
 });
 
+// .sort({ date: 'descending' })
 app.get('/api/blogs', async (req, res) => {
   try {
     const blogs = await Blog.find({});
