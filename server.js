@@ -70,10 +70,12 @@ app.post('/register', (req, res) => {
 
 app.post('/create', async (req, res) => {
   try {
-    const { title, body, author, email } = req.body;
-    const formattedDate = new Date().toLocaleTimeString([], { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-    await Blog.create({ title, body, author, email, date: formattedDate });
-    res.json({ posted: true });
+    if (await req.isAuthenticated()) {
+      const { title, body, author, email } = req.body;
+      const formattedDate = new Date().toLocaleTimeString([], { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+      await Blog.create({ title, body, author, email, date: formattedDate });
+      res.json({ posted: true });
+    }
   } catch (error) {
     console.log(error);
   }
@@ -81,10 +83,12 @@ app.post('/create', async (req, res) => {
 
 app.post('/delete', async (req, res) => {
   try {
-    const { id, username } = req.body;
-    console.log(username);
-    await Blog.findByIdAndDelete(id);
-    res.json({ deleted: true });
+    if (await req.isAuthenticated()) {
+      const { id, username } = req.body;
+      console.log(username);
+      await Blog.findByIdAndDelete(id);
+      res.json({ deleted: true });
+    }
   } catch (error) {
     console.log(error);
   }
