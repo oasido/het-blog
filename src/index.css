@@ -132,6 +132,10 @@ a:active {
 }
 
 /* create new blog form */
+.post-create {
+  background-color: rgb(36, 36, 36);
+}
+
 .create {
   max-width: 80vw;
   margin: 0 auto;
