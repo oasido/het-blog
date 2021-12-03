@@ -94,16 +94,35 @@ a:active {
   text-align: center;
 }
 
-/* blog details page */
-.blog-details h2 {
-  font-size: 20px;
+/* post itself page */
+.post {
+  background-color: rgb(36, 36, 36);
+  border-radius: 0.3rem;
+  background-color: rgb(36, 36, 36);
+  padding: 4rem;
+  display: flex;
+  margin: 0 auto;
+}
+
+.post-details h1 {
+  font-size: 3rem;
+  color: white;
+}
+
+.post-details h2 {
+  font-size: 1.3rem;
+  font-family: Arial, sans-serif;
   color: #216dc4;
   margin-bottom: 10px;
 }
-.blog-details div {
-  margin: 20px 0;
+
+.post-details .blog-body {
+  font-family: Arial, sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.5;
 }
-.blog-details button {
+
+.post-details button {
   color: #fff;
   border: 0;
   padding: 5px;
