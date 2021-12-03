@@ -352,3 +352,20 @@ a:active {
   border-bottom: 2px solid #585858;
   /* margin: -40px auto 10px; */
 }
+
+.sort-by {
+  word-spacing: 0.3rem;
+  user-select: none;
+}
+
+.sort-by span {
+  cursor: pointer;
+}
+
+.greyed-out {
+  opacity: 50%;
+}
+
+.greyed-out:hover {
+  opacity: 60%;
+}
