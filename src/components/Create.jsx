@@ -30,16 +30,27 @@ const Create = ({ user }) => {
   return (
     <div className="create">
       <form onSubmit={handleAddBlog}>
-        <h2>Create A New Post</h2>
+        <input className="create-title" required maxLength="70" placeholder="Post title goes here..." value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input
+          className="create-description"
+          required
+          maxLength="50"
+          placeholder="Short description, hashtags..."
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <textarea className="create-body" required placeholder="Write your post here..." rows="20" value={body} onChange={(e) => setBody(e.target.value)}></textarea>
 
-        <label>Title</label>
-        <input required value={title} onChange={(e) => setTitle(e.target.value)} />
-
-        <label>Body</label>
-        <textarea required rows="10" value={body} onChange={(e) => setBody(e.target.value)}></textarea>
-
-        {!isAddingBlog && <button type="submit">Post</button>}
-        {isAddingBlog && <button type="submit">Posting...</button>}
+        {!isAddingBlog && (
+          <button className="create-post" type="submit">
+            Create Post
+          </button>
+        )}
+        {isAddingBlog && (
+          <button className="create-post" type="submit">
+            Posting...
+          </button>
+        )}
       </form>
     </div>
   );
