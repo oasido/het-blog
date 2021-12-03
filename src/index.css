@@ -335,6 +335,12 @@ a:active {
   color: #6b95c5;
 }
 
+.blog-preview .blog-description {
+  padding-left: 2.5rem;
+  font-size: 0.9rem;
+  font-family: Arial, sans-serif;
+}
+
 .time-posted {
   font-weight: 200;
   font-size: 0.8rem;
