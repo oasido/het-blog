@@ -1,8 +1,26 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Sort from './Sort';
 
 function BlogList({ blogs }) {
   const reversedBlogs = [...blogs].reverse(); // New blogs show on top
-  console.log(reversedBlogs);
+  const [blogsOrder, setBlogsOrder] = useState({
+    title: 'New',
+    blogs: reversedBlogs,
+  });
+
+  const handleSort = (e) => {
+    switch (true) {
+      case e.target.innerText === 'Old' && blogsOrder.title !== 'Old':
+        setBlogsOrder({ title: 'Old', blogs: [...blogs] });
+        break;
+      case e.target.innerText === 'New' && blogsOrder.title !== 'New':
+        setBlogsOrder({ title: 'New', blogs: reversedBlogs });
+        break;
+      default: // Do nothing
+    }
+  };
+
   return (
     <div className="blogs">
       <Sort blogsOrder={blogsOrder} handleSort={handleSort} />
