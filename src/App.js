@@ -3,13 +3,20 @@
 // DONE: Reverse blogs so that new posts would be at the top
 // DONE: Add server side checks to see if a user tries to delete other users' posts, make sure deletion only works on his posts
 // DONE: Add profile pictures
-// DONE: Beautify page
+// DONE: Beautify home page
+// DONE: Add sorting feature
+// DONE: Beautify post creation page
+// DONE: Beautify post itself page
+// TODO: Make pinned messages go on top
 // TODO: Add user settings page
 // TODO: Add commenting system
+// TODO: Add profile page
+// TODO: Add admin page where you can pin posts & manage users (maybe add canPost in user model)
+// TODO: Add markdown support for adding blogs, pictures in blog
+// TODO: Add edit functionality
+// MINOR: Rearrange every component into subfolders
 // MINOR: Add minimum user/password length
 // MINOR: Ternary operator if DB is off
-// IDEA: Add markdown support for adding blogs.
-// IDEA: Add profile page, pictures in blogs, user avatars
 
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
