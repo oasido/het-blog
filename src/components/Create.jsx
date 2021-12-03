@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Create = ({ user }) => {
-  const { isAuthenticated, email, username: author } = user;
+  const { isAuthenticated, email, username: author, userID: authorID } = user;
   const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
   const [body, setBody] = useState('');
   const [isAddingBlog, setIsAddingBlog] = useState(false);
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const Create = ({ user }) => {
   const handleAddBlog = (e) => {
     e.preventDefault();
     setIsAddingBlog(true);
-    const blog = { title, body, author, email };
+    const blog = { title, description, body, author, authorID, email };
     fetch('/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

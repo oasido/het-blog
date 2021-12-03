@@ -11,7 +11,6 @@ function Navbar({ user }) {
         <a href="/">
           <h1>HET BLOG</h1>
         </a>
-
         {/* </Link> */}
 
         <div className="links">

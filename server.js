@@ -30,8 +30,8 @@ passport.deserializeUser(User.deserializeUser());
 
 app.get('/api/session', async (req, res) => {
   if (await req.isAuthenticated()) {
-    const { username, email, profilePicture } = req.user;
-    res.send({ username, email, profilePicture, isAuthenticated: req.isAuthenticated() });
+    const { username, id, email, profilePicture } = req.user;
+    res.send({ username, userID: id, email, profilePicture, isAuthenticated: req.isAuthenticated() });
   } else {
     res.send({ isAuthenticated: false });
   }
@@ -71,9 +71,9 @@ app.post('/register', (req, res) => {
 app.post('/create', async (req, res) => {
   try {
     if (await req.isAuthenticated()) {
-      const { title, body, author, email } = req.body;
+      const { title, description, body, author, authorID, email } = req.body;
       const formattedDate = new Date().toLocaleTimeString([], { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-      await Blog.create({ title, body, author, email, date: formattedDate });
+      await Blog.create({ title, description, body, author, authorID, email, date: formattedDate });
       res.json({ posted: true });
     }
   } catch (error) {
