@@ -133,38 +133,59 @@ a:active {
 
 /* create new blog form */
 .create {
-  max-width: 400px;
+  max-width: 80vw;
   margin: 0 auto;
-  text-align: center;
-}
-.create label {
-  text-align: left;
-  display: block;
-}
-.create h2 {
-  font-size: 20px;
-  color: #216dc4;
-  margin-bottom: 30px;
-}
-.create input,
-.create textarea,
-.create select {
-  width: 100%;
-  padding: 6px 10px;
-  margin: 10px 0;
-  /* border: 1px solid #ddd; */
   border-radius: 0.3rem;
-  box-sizing: border-box;
-  display: block;
   background-color: rgb(36, 36, 36);
+  padding: 1rem;
 }
-.create button {
-  background: #216dc4;
-  color: #fff;
-  border: 0;
-  padding: 8px;
+
+.create-post {
+  color: white;
+  font-weight: bold;
+  padding: 6px;
+  width: 6rem;
+  font-size: 1rem;
+  background-color: #216dc4;
   border-radius: 8px;
+  margin: 0 0.5rem;
+  border: none;
+}
+
+.create-post:hover {
   cursor: pointer;
+}
+
+.create input,
+.create textarea {
+  width: 100%;
+  resize: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  outline: 0;
+  border-style: none;
+  overflow: auto;
+  background-color: rgb(36, 36, 36);
+  color: #d8d4cf;
+  word-break: break-word;
+  margin-bottom: 1rem;
+}
+
+.create-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.create-description {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.create-body {
+  font-size: 1rem;
+  font-family: Arial, sans-serif;
 }
 
 /* LoginOrRegister component */
