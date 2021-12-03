@@ -12,6 +12,7 @@
 html,
 body {
   max-width: 100%;
+  min-height: 400px;
   overflow-x: hidden;
   /* testing dark reader color scheme
   background-color: #131516;*/
