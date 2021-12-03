@@ -94,8 +94,15 @@ app.post('/delete', async (req, res) => {
   }
 });
 
+app.post('/profile-picture', async (req, res) => {
+  const userID = req.body.blog.authorID;
+  const { profilePicture } = await User.findById(userID);
+  res.send({ profilePicture });
+});
+
 app.post('/login', passport.authenticate('local'), (req, res) => {
-  res.send({ username: req.user.username });
+  const username = req.user.username;
+  res.send({ username });
 });
 
 app.post('/logout', (req, res) => {

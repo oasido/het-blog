@@ -1,14 +1,28 @@
 import { useNavigate, useParams } from 'react-router';
+import { useState } from 'react';
 import useFetch from './useFetch';
 import ReactLoading from 'react-loading';
 import NotFound from './NotFound';
 
 const BlogItself = ({ user }) => {
   const { isAuthenticated, username } = user;
-
   const { id } = useParams();
   const { data: blog, isLoading, error } = useFetch('/api/blogs/' + id);
   const navigate = useNavigate();
+  const [profilePicture, setProfilePicture] = useState('');
+
+  const getProfilePicture = async () => {
+    const response = await fetch('/profile-picture', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ blog }),
+    });
+    const body = await response.json();
+    setProfilePicture(body.profilePicture);
+  };
+
+  blog && getProfilePicture();
+  // eslint-disable-next-line
 
   const handleDelete = () => {
     fetch('/delete', {
@@ -21,7 +35,7 @@ const BlogItself = ({ user }) => {
   };
 
   return (
-    <div>
+    <div className="post">
       {error && <NotFound />}
       {isLoading && (
         <div>
@@ -29,20 +43,26 @@ const BlogItself = ({ user }) => {
           <div className="loading">Loading, please wait...</div>
         </div>
       )}
-      <div className="blog-details">
+      <div className="post-details">
         {blog && (
           <article>
-            <h2>{blog.title}</h2>
-            <p className="line-break">{blog.body}</p>
-            <div className="blog-info">
-              <p>Written by: {blog.author}</p>
-              <p>Contact: {blog.email}</p>
+            <div className="top-bar">
+              <img className="author-picture" src={profilePicture} alt="avatar" />
+              <div>
+                <p className="author-text">{blog.author}</p>
+                <p className="time-posted">{blog.date}</p>
+              </div>
+              {isAuthenticated && blog.author === username && (
+                <div className="remove-blog">
+                  <button className="background-danger" onClick={handleDelete}>
+                    🗑 Remove
+                  </button>
+                </div>
+              )}
             </div>
-            {isAuthenticated && blog.author === username && (
-              <button className="background-danger" onClick={handleDelete}>
-                Remove
-              </button>
-            )}
+            <h1>{blog.title}</h1>
+            <h2 className="blog-description">{blog.description}</h2>
+            <p className="line-break blog-body">{blog.body}</p>
           </article>
         )}
       </div>
