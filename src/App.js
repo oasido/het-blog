@@ -7,13 +7,15 @@
 // DONE: Add sorting feature
 // DONE: Beautify post creation page
 // DONE: Beautify post itself page
-// TODO: Make pinned messages go on top
+// DONE: Make pinned messages go on top
+// TODO: Fix avatars so that they will show the correct ones for users
 // TODO: Add user settings page
 // TODO: Add commenting system
 // TODO: Add profile page
 // TODO: Add admin page where you can pin posts & manage users (maybe add canPost in user model)
 // TODO: Add markdown support for adding blogs, pictures in blog
 // TODO: Add edit functionality
+// MINOR: Navbar hide create post button when on create post page, show Create Post as text
 // MINOR: Rearrange every component into subfolders
 // MINOR: Add minimum user/password length
 // MINOR: Ternary operator if DB is off
