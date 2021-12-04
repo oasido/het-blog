@@ -95,7 +95,7 @@ app.post('/delete', async (req, res) => {
 });
 
 app.post('/profile-picture', async (req, res) => {
-  const userID = req.body.blog.authorID;
+  const userID = req.body.authorID;
   const { profilePicture } = await User.findById(userID);
   res.send({ profilePicture });
 });

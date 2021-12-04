@@ -12,10 +12,11 @@ const BlogItself = ({ user }) => {
   const [profilePicture, setProfilePicture] = useState('');
 
   const getProfilePicture = async () => {
+    const authorID = blog.authorID;
     const response = await fetch('/profile-picture', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ blog }),
+      body: JSON.stringify({ authorID }),
     });
     const body = await response.json();
     setProfilePicture(body.profilePicture);
