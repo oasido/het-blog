@@ -57,6 +57,17 @@ app.get('/api/blogs/:id', async (req, res) => {
   }
 });
 
+app.get('/api/user/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const [user] = await User.find({ username: id });
+    const userID = { userID: user.id };
+    res.send(userID);
+  } catch (error) {
+    res.send({ userID: 'UserNotFound' });
+  }
+});
+
 app.post('/register', (req, res) => {
   const { username, email, password, confirmPassword } = req.body;
   if (password !== confirmPassword) {
