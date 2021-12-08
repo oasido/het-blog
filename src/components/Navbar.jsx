@@ -26,7 +26,7 @@ function Navbar({ user }) {
               {!isAuthenticated && <Link to="/register">Register</Link>}
               {isAuthenticated && <p>@{username}</p>}
               {isAuthenticated && <div className="seperator" />}
-              {isAuthenticated && <Link to="/my-posts">My Posts</Link>}
+              {isAuthenticated && <Link to="/profile">Profile</Link>}
               {isAuthenticated && <Link to="/settings">Settings</Link>}
               {isAuthenticated && <div className="seperator" />}
               {isAuthenticated && (
