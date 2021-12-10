@@ -288,6 +288,7 @@ a:active {
 
 .dropdown .dropdown-content > p {
   padding-bottom: 0.6rem;
+  font-weight: 400;
 }
 
 .dropdown .dropdown-content > a {
@@ -349,6 +350,11 @@ a:active {
   height: 2rem;
   display: inline-block;
   vertical-align: bottom;
+}
+
+.big {
+  width: 4rem;
+  height: 4rem;
 }
 
 .blog-title {
