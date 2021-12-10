@@ -96,7 +96,6 @@ app.post('/delete', async (req, res) => {
   try {
     if (await req.isAuthenticated()) {
       const { id, username } = req.body;
-      console.log(username);
       await Blog.findByIdAndDelete(id);
       res.json({ deleted: true });
     }
