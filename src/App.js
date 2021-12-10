@@ -8,13 +8,15 @@
 // DONE: Beautify post creation page
 // DONE: Beautify post itself page
 // DONE: Make pinned messages go on top
-// TODO: Fix avatars so that they will show the correct ones for users
+// DONE: Add profile page
+// TODO: Style Profile Page & Add User properties
+// TODO: Fix avatars so that they will show the correct ones for users / ON HOLD
 // TODO: Add user settings page
 // TODO: Add commenting system
-// TODO: Add profile page
 // TODO: Add admin page where you can pin posts & manage users (maybe add canPost in user model)
 // TODO: Add markdown support for adding blogs, pictures in blog
 // TODO: Add edit functionality
+// IDEA: Likes feature
 // MINOR: Navbar hide create post button when on create post page, show Create Post as text
 // MINOR: Rearrange every component into subfolders
 // MINOR: Add minimum user/password length
@@ -30,6 +32,7 @@ import NotFound from './components/NotFound';
 import Register from './components/Register';
 import Login from './components/Login';
 import Logout from './components/Logout';
+import Profile from './components/Profile';
 
 function App() {
   const [user, setUser] = useState({ isAuthenticated: false });
@@ -61,6 +64,7 @@ function App() {
             <Route exact path="/logout" element={<Logout user={user} />} />
             <Route exact path="/register" element={<Register user={user} />} />
             <Route path="/blogs/:id" element={<BlogItself user={user} />} />
+            <Route exact path="/u/:username" element={<Profile user={user} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
