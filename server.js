@@ -61,8 +61,8 @@ app.get('/api/user/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const [user] = await User.find({ username: id });
-    const userID = { userID: user.id };
-    res.send(userID);
+    const userInfo = { userID: user.id, memberSince: user.memberSince, about: user.about, admin: user.admin };
+    res.send(userInfo);
   } catch (error) {
     res.send({ userID: 'UserNotFound' });
   }
