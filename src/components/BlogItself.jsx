@@ -16,7 +16,7 @@ const BlogItself = ({ user }) => {
     const response = await fetch('/profile-picture', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ authorID }),
+      body: JSON.stringify({ userID: authorID }),
     });
     const body = await response.json();
     setProfilePicture(body.profilePicture);
