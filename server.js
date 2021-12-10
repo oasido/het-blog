@@ -106,9 +106,13 @@ app.post('/delete', async (req, res) => {
 });
 
 app.post('/profile-picture', async (req, res) => {
-  const userID = req.body.authorID;
-  const { profilePicture } = await User.findById(userID);
-  res.send({ profilePicture });
+  try {
+    const { userID } = req.body;
+    const { profilePicture } = await User.findById(userID);
+    res.send({ profilePicture });
+  } catch (error) {
+    console.log('No profile picture found');
+  }
 });
 
 app.post('/login', passport.authenticate('local'), (req, res) => {
