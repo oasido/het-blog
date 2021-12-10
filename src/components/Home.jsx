@@ -14,7 +14,7 @@ function Home() {
     <div className="home">
       {isLoading && (
         <div>
-          <ReactLoading className="loading" color="#000" type="spin" />
+          <ReactLoading className="loading" color="#fff" type="spin" />
           <div className="loading">Loading, please wait...</div>
         </div>
       )}
