@@ -10,7 +10,9 @@
 // DONE: Make pinned messages go on top
 // DONE: Add profile page
 // TODO: Style Profile Page & Add User properties
-// TODO: Fix avatars so that they will show the correct ones for users / ON HOLD
+// TODO: Learn React Context https://reactjs.org/docs/context.html#dynamic-context
+// TODO: Fix avatars so that they will show the correct ones for users / ON HOLD => API for pictures
+// TODO: Change from POST to GET
 // TODO: Add user settings page
 // TODO: Add commenting system
 // TODO: Add admin page where you can pin posts & manage users (maybe add canPost in user model)
