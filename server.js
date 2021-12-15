@@ -68,6 +68,18 @@ app.get('/api/user/:id', async (req, res) => {
   }
 });
 
+app.get('/api/user/profile-picture/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await User.findById(id);
+    const profilePicture = user.profilePicture;
+    res.send({ profilePicture });
+  } catch (error) {
+    res.send('UserNotFound');
+    console.log(error);
+  }
+});
+
 app.post('/register', (req, res) => {
   const { username, email, password, confirmPassword } = req.body;
   if (password !== confirmPassword) {
