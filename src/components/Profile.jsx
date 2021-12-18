@@ -37,12 +37,22 @@ const Profile = ({ user }) => {
       {userID !== 'UserNotFound' && (
         <>
           <div className="profile-picture">
-            {!avatar && <ComponentLoader />}
-            {avatar && <img className="user-avatar big" src={avatar} alt="user avatar" />}
+            <img className="user-avatar big" src={`/profile-pictures/${userID}`} alt="user avatar" />
           </div>
-          <h1 className="profile-name">{usernameParams}</h1>
-          <p>This is a profile page</p>
-          <p>aboutme goes here</p>
+          <div className="profile-content">
+            <h1 className="profile-name">{usernameParams}</h1>
+            {userAbout ? (
+              <p>{userAbout}</p>
+            ) : (
+              <p>
+                <i>Hello world!</i>
+              </p>
+            )}
+          </div>
+          <div className="profile-bottom">
+            {userMemberSince && <p>Joined on: {userMemberSince}</p>}
+            <p>{userMemberSince}</p>
+          </div>
         </>
       )}
       {userID === 'UserNotFound' && <NotFound user={usernameParams} />}
