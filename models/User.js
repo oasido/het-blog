@@ -8,6 +8,7 @@ const User = new Schema({
   profilePicture: { type: String, required: true, default: 'profile-pictures/default.png' },
   email: { type: String, required: true },
   memberSince: { type: String, required: true },
+  location: { type: String, required: false },
   admin: { type: Boolean, required: true, default: false },
 });
 
