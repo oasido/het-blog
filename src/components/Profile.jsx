@@ -7,18 +7,22 @@ const Profile = ({ user }) => {
   const { isAuthenticated, username } = user;
   const { username: usernameParams } = useParams();
   const [userID, setUserID] = useState(null);
+  const [userAbout, setUserAbout] = useState(null);
+  const [userMemberSince, setUserMemberSince] = useState(null);
 
   useEffect(() => {
-    const findUserID = async () => {
+    const getUser = async () => {
       const response = await fetch('/api/user/' + usernameParams, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-      const { userID } = await response.json();
+      const { userID, about, memberSince } = await response.json();
       setUserID(userID);
+      setUserAbout(about);
+      setUserMemberSince(memberSince);
     };
-    findUserID();
+    getUser();
 
     // eslint-disable-next-line
   }, []);
