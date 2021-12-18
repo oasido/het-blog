@@ -27,21 +27,6 @@ const Profile = ({ user }) => {
     // eslint-disable-next-line
   }, []);
 
-  useEffect(() => {
-    const getProfilePicture = async () => {
-      const response = await fetch('/profile-picture', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userID }),
-      });
-      const body = await response.json();
-      setAvatar(body.profilePicture);
-    };
-    getProfilePicture();
-  }, [userID]);
-
-  const [avatar, setAvatar] = useState('');
-
   const navigate = useNavigate();
   if (isAuthenticated) {
     console.log('logged in');
