@@ -4,14 +4,14 @@ const ComponentLoader = (props) => {
  return (
   <ContentLoader 
     speed={1}
-    width={64}
-    height={62}
-    viewBox="0 0 64 64"
+    width={80}
+    height={80}
+    viewBox="0 0 65 65"
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
     {...props}
   >
-    <circle cx="31" cy="31" r="31" />
+    <circle cx="33" cy="34" r="31" />
   </ContentLoader>
  );
 }
