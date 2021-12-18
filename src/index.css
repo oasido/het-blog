@@ -363,8 +363,8 @@ a:active {
 
 .author-picture {
   border-radius: 45%;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   display: inline-block;
   vertical-align: bottom;
   margin-right: 0.5rem;
@@ -372,15 +372,15 @@ a:active {
 
 .user-avatar {
   border-radius: 45%;
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   display: inline-block;
   vertical-align: bottom;
 }
 
 .big {
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 .blog-title {
