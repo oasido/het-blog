@@ -11,8 +11,13 @@ const storage = multer.diskStorage({
     cb(null, 'profile-pictures/');
   },
   filename: function (req, file, cb) {
-    const { id } = req.user;
-    cb(null, id);
+    try {
+      const { id } = req.user;
+      console.log(req.user);
+      cb(null, id);
+    } catch (error) {
+      console.log(error);
+    }
   },
 });
 
