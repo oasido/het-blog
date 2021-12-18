@@ -19,6 +19,8 @@
 // TODO: Add markdown support for adding blogs, pictures in blog
 // TODO: Add edit functionality
 // IDEA: Likes feature
+// MINOR: Convert to axios?
+// MINOR: Value=value
 // MINOR: Navbar hide create post button when on create post page, show Create Post as text
 // MINOR: Rearrange every component into subfolders
 // MINOR: Add minimum user/password length
