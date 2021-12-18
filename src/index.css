@@ -59,7 +59,7 @@ a:active {
 .navbar .inverted {
   color: white;
   font-weight: bold;
-  padding: 6px;
+  padding: 11px;
   background-color: #216dc4;
   border-radius: 8px;
   margin: 0 0.5rem;
@@ -296,16 +296,17 @@ a:active {
   font-weight: bold;
 }
 
-.dropdown:hover .dropdown-content {
+/* .dropdown:hover .dropdown-content { */
+.dropdown .dropdown-content {
   background-color: #383838;
   display: flex;
   position: absolute;
-  /* top: 1rem; */
   right: 0.5rem;
   border-radius: 0.3rem;
-  width: 250%;
+  width: 450%;
   border: 2px solid #444444;
   flex-wrap: wrap;
+  justify-content: left;
   text-align: left;
   text-decoration: none;
   color: rgb(189, 189, 189);
@@ -381,6 +382,16 @@ a:active {
 .big {
   width: 5rem;
   height: 5rem;
+}
+
+.very-big {
+  width: 12rem;
+  height: 12rem;
+}
+
+.settings-avatar {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .blog-title {
