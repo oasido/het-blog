@@ -10,6 +10,7 @@ const blogSchema = new Schema({
   email: { type: String, required: true },
   date: { type: String, required: true },
   pinned: { type: Boolean, required: true, default: false },
+  likes: { type: Number, required: true, default: 0 },
 });
 
 module.exports = mongoose.model('Blog', blogSchema);
