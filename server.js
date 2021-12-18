@@ -113,7 +113,8 @@ app.post('/register', (req, res) => {
   if (password !== confirmPassword) {
     res.send({ error: { name: 'PassNoMatch', message: 'Passwords do not match' } });
   } else if (password === confirmPassword) {
-    User.register(new User({ username, email }), password, (err) => {
+    const date = new Date().toLocaleDateString('en-US');
+    User.register(new User({ username, email, memberSince: date }), password, (err) => {
       res.send({ error: err });
     });
   }
