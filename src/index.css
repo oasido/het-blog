@@ -296,8 +296,7 @@ a:active {
   font-weight: bold;
 }
 
-/* .dropdown:hover .dropdown-content { */
-.dropdown .dropdown-content {
+.dropdown:hover .dropdown-content {
   background-color: #383838;
   display: flex;
   position: absolute;
