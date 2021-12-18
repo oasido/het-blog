@@ -89,7 +89,8 @@ a:active {
 }
 
 /* Profile Preview */
-.profile {
+.profile,
+.settings {
   padding: 2rem 1rem;
   margin: 0.4rem 0;
   position: relative;
@@ -99,8 +100,33 @@ a:active {
 
 .profile-picture {
   user-select: none;
-  position: absolute;
-  bottom: 7.5rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  bottom: 5rem;
+}
+
+.profile-content {
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  bottom: 4.5rem;
+}
+
+.profile-content h1 {
+  font-size: 3.5rem;
+}
+
+.profile-content p {
+  font-family: Arial, sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.profile-bottom {
+  display: flex;
+  justify-content: space-around;
+  opacity: 50%;
 }
 
 .profile-name {
