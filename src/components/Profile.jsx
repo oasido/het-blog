@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ComponentLoader from './ComponentLoader';
+import ProfilePicture from './ProfilePicture';
 import NotFound from './NotFound';
 
 const Profile = ({ user }) => {
@@ -37,7 +38,7 @@ const Profile = ({ user }) => {
       {userID !== 'UserNotFound' && (
         <>
           <div className="profile-picture">
-            <img className="user-avatar big" src={`/profile-pictures/${userID}`} alt="user avatar" />
+            <ProfilePicture className="user-avatar big" src={`/profile-pictures/${userID}`} />
           </div>
           <div className="profile-content">
             <h1 className="profile-name">{usernameParams}</h1>

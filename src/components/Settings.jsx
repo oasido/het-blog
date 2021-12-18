@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ProfilePicture from './ProfilePicture';
 import axios from 'axios';
 
 const Settings = ({ user }) => {
@@ -32,8 +33,8 @@ const Settings = ({ user }) => {
       <h1>User Settings</h1>
       <div className="settings">
         <form onSubmit={formHandler}>
-          <div className="">
-            <img className="user-avatar big" src={`/profile-pictures/${userID}`} alt="user avatar" />
+          <div className="settings-avatar">
+            <ProfilePicture className="user-avatar very-big" src={`/profile-pictures/${userID}`} />
           </div>
           <input onChange={fileHandler} type="file" name="avatar" />
           <button type="submit">Upload</button>

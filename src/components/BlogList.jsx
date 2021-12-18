@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Sort from './Sort';
+import ProfilePicture from './ProfilePicture';
 
 function BlogList({ blogs }) {
   const reversedBlogs = [...blogs].reverse(); // New blogs show on top
@@ -30,8 +31,7 @@ function BlogList({ blogs }) {
       <div className="blog-preview" key={blog._id}>
         <Link to={`/blogs/${blog._id}`}>
           <div className="top-bar">
-            <img className="author-picture" src={`/profile-pictures/${blog.authorID}`} alt="user avatar" />
-            {/* <img className="author-picture" src={avatar} alt="user avatar" /> */}
+            <ProfilePicture className="author-picture" src={`/profile-pictures/${blog.authorID}`} />
             <div>
               <p className="author-text">{blog.author}</p>
               <p className="time-posted">{blog.date}</p>

@@ -1,5 +1,6 @@
 // import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ProfilePicture from './ProfilePicture';
 
 function Navbar({ user }) {
   const { isAuthenticated, username, profilePicture } = user;
@@ -20,7 +21,7 @@ function Navbar({ user }) {
             </Link>
           )}
           <div className="dropdown">
-            <span>{isAuthenticated ? <img className="user-avatar" src={profilePicture} alt="user avatar" /> : '☰'}</span>
+            <>{isAuthenticated ? <ProfilePicture className="author-picture" src={profilePicture} /> : '☰'}</>
             <div className="dropdown-content">
               {!isAuthenticated && <Link to="/login">Login</Link>}
               {!isAuthenticated && <Link to="/register">Register</Link>}

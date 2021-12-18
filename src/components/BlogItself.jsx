@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router';
 import { useState } from 'react';
 import useFetch from './useFetch';
+import ProfilePicture from './ProfilePicture';
 import ReactLoading from 'react-loading';
 import NotFound from './NotFound';
 
@@ -33,7 +34,7 @@ const BlogItself = ({ user }) => {
         {blog && (
           <article>
             <div className="top-bar">
-              <img className="author-picture" src={`/profile-pictures/${blog.authorID}`} alt="avatar" />
+              <ProfilePicture className="author-picture" src={`/profile-pictures/${blog.authorID}`} />
               <div>
                 <p className="author-text">{blog.author}</p>
                 <p className="time-posted">{blog.date}</p>
