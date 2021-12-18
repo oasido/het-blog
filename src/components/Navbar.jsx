@@ -8,11 +8,11 @@ function Navbar({ user }) {
   return (
     <div className="Navbar">
       <nav className="navbar">
-        {/* <Link to="/"> */}
-        <a href="/">
+        <Link to="/">
+          {/* <a href="/"> */}
           <h1>HET BLOG</h1>
-        </a>
-        {/* </Link> */}
+          {/* </a> */}
+        </Link>
 
         <div className="links">
           {isAuthenticated && (
