@@ -9,21 +9,6 @@ const BlogItself = ({ user }) => {
   const { id } = useParams();
   const { data: blog, isLoading, error } = useFetch('/api/blogs/' + id);
   const navigate = useNavigate();
-  const [profilePicture, setProfilePicture] = useState('');
-
-  const getProfilePicture = async () => {
-    const authorID = blog.authorID;
-    const response = await fetch('/profile-picture', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userID: authorID }),
-    });
-    const body = await response.json();
-    setProfilePicture(body.profilePicture);
-  };
-
-  blog && getProfilePicture();
-  // eslint-disable-next-line
 
   const handleDelete = () => {
     fetch('/delete', {
@@ -48,7 +33,7 @@ const BlogItself = ({ user }) => {
         {blog && (
           <article>
             <div className="top-bar">
-              <img className="author-picture" src={profilePicture} alt="avatar" />
+              <img className="author-picture" src={`/profile-pictures/${blog.authorID}`} alt="avatar" />
               <div>
                 <p className="author-text">{blog.author}</p>
                 <p className="time-posted">{blog.date}</p>

@@ -5,9 +5,37 @@ const Blog = require('./models/Blog.js');
 const User = require('./models/User.js');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'profile-pictures/');
+  },
+  filename: function (req, file, cb) {
+    const { id } = req.user;
+    cb(null, id);
+  },
+});
+
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(console.log('Unsupported file type'), false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5,
+  },
+  fileFilter: fileFilter,
+});
+
 const app = express();
 const port = 3080;
 
+app.use('/profile-pictures', express.static('profile-pictures'));
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(express.urlencoded({ extended: false }));
@@ -123,6 +151,18 @@ app.post('/profile-picture', async (req, res) => {
     res.send({ profilePicture });
   } catch (error) {
     console.log('No profile picture found');
+
+app.post('/upload', upload.single('avatar'), async (req, res) => {
+  try {
+    if (req.file) {
+      const path = req.file.path.replace(/\\/g, '/');
+      const userID = req.user._id;
+      await User.findByIdAndUpdate(userID, { profilePicture: path });
+      res.send({ msg: 'Image uploaded!' });
+    }
+  } catch (error) {
+    console.log(error);
+    res.send({ msg: 'Upload failed!' });
   }
 });
 

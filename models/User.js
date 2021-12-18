@@ -5,9 +5,9 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const User = new Schema({
   username: { type: String, required: true },
   about: { type: String, required: false },
-  profilePicture: { type: String, required: false, default: 'https://i.imgur.com/C4RaIiA.png' },
+  profilePicture: { type: String, required: true, default: 'profile-pictures/default.png' },
   email: { type: String, required: true },
-  memberSince: { type: Date, required: true, default: Date.now },
+  memberSince: { type: String, required: true },
   admin: { type: Boolean, required: true, default: false },
 });
 

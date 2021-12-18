@@ -30,7 +30,8 @@ function BlogList({ blogs }) {
       <div className="blog-preview" key={blog._id}>
         <Link to={`/blogs/${blog._id}`}>
           <div className="top-bar">
-            <img className="author-picture" src="https://i.imgur.com/a3QC4si.png" alt="user avatar" />
+            <img className="author-picture" src={`/profile-pictures/${blog.authorID}`} alt="user avatar" />
+            {/* <img className="author-picture" src={avatar} alt="user avatar" /> */}
             <div>
               <p className="author-text">{blog.author}</p>
               <p className="time-posted">{blog.date}</p>
