@@ -37,6 +37,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import Profile from './components/Profile';
+import Settings from './components/Settings';
 
 function App() {
   const [user, setUser] = useState({ isAuthenticated: false });
@@ -69,6 +70,7 @@ function App() {
             <Route exact path="/register" element={<Register user={user} />} />
             <Route path="/blogs/:id" element={<BlogItself user={user} />} />
             <Route exact path="/u/:username" element={<Profile user={user} />} />
+            <Route exact path="/settings" element={<Settings user={user} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
