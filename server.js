@@ -148,10 +148,15 @@ app.post('/delete', async (req, res) => {
 app.post('/profile-picture', async (req, res) => {
   try {
     const { userID } = req.body;
-    const { profilePicture } = await User.findById(userID);
-    res.send({ profilePicture });
+    if (userID) {
+      const { profilePicture } = await User.findById(userID);
+      res.send({ profilePicture });
+    }
   } catch (error) {
     console.log('No profile picture found');
+    console.log(error);
+  }
+});
 
 app.post('/upload', upload.single('avatar'), async (req, res) => {
   try {
