@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
       console.log(req.user);
       cb(null, id);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   },
 });
@@ -76,7 +76,7 @@ app.get('/api/blogs', async (req, res) => {
     const blogs = await Blog.find({});
     res.send(blogs);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 
@@ -86,7 +86,7 @@ app.get('/api/blogs/:id', async (req, res) => {
     const blog = await Blog.findById(id);
     res.send(blog);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 
@@ -109,7 +109,7 @@ app.get('/api/user/profile-picture/:id', async (req, res) => {
     res.send({ profilePicture });
   } catch (error) {
     res.send('UserNotFound');
-    console.log(error);
+    console.error(error);
   }
 });
 
@@ -134,7 +134,7 @@ app.post('/create', async (req, res) => {
       res.json({ posted: true });
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 
@@ -146,7 +146,7 @@ app.post('/delete', async (req, res) => {
       res.json({ deleted: true });
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 
@@ -159,7 +159,7 @@ app.post('/profile-picture', async (req, res) => {
     }
   } catch (error) {
     console.log('No profile picture found');
-    console.log(error);
+    console.error(error);
   }
 });
 
@@ -172,7 +172,7 @@ app.post('/upload', upload.single('avatar'), async (req, res) => {
       res.send({ msg: 'Image uploaded!' });
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.send({ msg: 'Upload failed!' });
   }
 });
