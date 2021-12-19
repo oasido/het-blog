@@ -10,6 +10,7 @@ const Profile = ({ user }) => {
   const [userID, setUserID] = useState(null);
   const [userAbout, setUserAbout] = useState(null);
   const [userMemberSince, setUserMemberSince] = useState(null);
+  const [avatar, setAvatar] = useState(`/profile-pictures/${userID}`);
 
   useEffect(() => {
     const getUser = async () => {
@@ -18,10 +19,11 @@ const Profile = ({ user }) => {
           'Content-Type': 'application/json',
         },
       });
-      const { userID, about, memberSince } = await response.json();
+      const { userID, about, memberSince, profilePicture } = await response.json();
       setUserID(userID);
       setUserAbout(about);
       setUserMemberSince(memberSince);
+      setAvatar(`/${profilePicture}`);
     };
     getUser();
 
@@ -38,7 +40,7 @@ const Profile = ({ user }) => {
       {userID !== 'UserNotFound' && (
         <>
           <div className="profile-picture">
-            <ProfilePicture className="user-avatar big" src={`/profile-pictures/${userID}`} />
+            <ProfilePicture className="user-avatar big" src={avatar} />
           </div>
           <div className="profile-content">
             <h1 className="profile-name">{usernameParams}</h1>
