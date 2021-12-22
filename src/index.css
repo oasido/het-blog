@@ -436,3 +436,8 @@ a:active {
 .greyed-out:hover {
   opacity: 60%;
 }
+
+/* favicons */
+p svg {
+  margin-right: 0.2rem;
+}

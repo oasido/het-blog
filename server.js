@@ -94,7 +94,17 @@ app.get('/api/user/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const [user] = await User.find({ username: id });
-    const userInfo = { userID: user.id, profilePicture: user.profilePicture, memberSince: user.memberSince, about: user.about, admin: user.admin };
+    const { github, twitter } = user.social;
+    const userInfo = {
+      userID: user.id,
+      admin: user.admin,
+      profilePicture: user.profilePicture,
+      memberSince: user.memberSince,
+      github,
+      twitter,
+      about: user.about,
+      location: user.location,
+    };
     res.send(userInfo);
   } catch (error) {
     res.send({ userID: 'UserNotFound' });
@@ -119,7 +129,7 @@ app.post('/register', (req, res) => {
     res.send({ error: { name: 'PassNoMatch', message: 'Passwords do not match' } });
   } else if (password === confirmPassword) {
     const date = new Date().toLocaleDateString('en-US');
-    User.register(new User({ username, email, memberSince: date }), password, (err) => {
+    User.register(new User({ username, email, memberSince: date, location: null, social: { github: null, twitter: null } }), password, (err) => {
       res.send({ error: err });
     });
   }
