@@ -1,7 +1,10 @@
 import { useContext } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import ProfilePicture from './ProfilePicture';
 import { UserContext } from './UserContext';
 
+function Navbar() {
+  const location = useLocation();
   const user = useContext(UserContext);
   const { isAuthenticated, username, profilePicture } = user;
 
@@ -15,7 +18,7 @@ import { UserContext } from './UserContext';
         </Link>
 
         <div className="links">
-          {isAuthenticated && (
+          {isAuthenticated && location.pathname !== '/create' && (
             <Link to="/create" className="inverted">
               Create Post
             </Link>
