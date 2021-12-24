@@ -11,14 +11,14 @@
 // DONE: Add profile page
 // DONE: Style Profile Page & Add User properties
 // DONE: Fix avatars so that they will show the correct ones for users / ON HOLD => API for pictures
-// TODO: Learn React Context https://reactjs.org/docs/context.html#dynamic-context
-// TODO: Change from POST to GET
+// DONE: Learn React Context https://reactjs.org/docs/context.html#dynamic-context
+// DONE: Change from POST to GET
 // TODO: Add user settings page
-// TODO: Add commenting system
+// TODO: Likes feature
 // TODO: Add admin page where you can pin posts & manage users (maybe add canPost in user model)
 // TODO: Add markdown support for adding blogs, pictures in blog
+// TODO: Add commenting system
 // TODO: Add edit functionality
-// IDEA: Likes feature
 // MINOR: Convert to axios?
 // MINOR: Value=value
 // MINOR: Navbar hide create post button when on create post page, show Create Post as text
@@ -38,6 +38,7 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 import Profile from './components/Profile';
 import Settings from './components/Settings';
+import { UserContext } from './components/UserContext';
 
 function App() {
   const [user, setUser] = useState({ isAuthenticated: false });
@@ -59,22 +60,24 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App">
-        <Navbar user={user} />
-        <div className="content">
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/create" element={<Create user={user} />} />
-            <Route exact path="/login" element={<Login user={user} />} />
-            <Route exact path="/logout" element={<Logout user={user} />} />
-            <Route exact path="/register" element={<Register user={user} />} />
-            <Route path="/blogs/:id" element={<BlogItself user={user} />} />
-            <Route exact path="/u/:username" element={<Profile user={user} />} />
-            <Route exact path="/settings" element={<Settings user={user} />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+      <UserContext.Provider value={user}>
+        <div className="App">
+          <Navbar />
+          <div className="content">
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/create" element={<Create />} />
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/logout" element={<Logout />} />
+              <Route exact path="/register" element={<Register />} />
+              <Route path="/blogs/:id" element={<BlogItself />} />
+              <Route exact path="/u/:username" element={<Profile />} />
+              <Route exact path="/settings" element={<Settings />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
         </div>
-      </div>
+      </UserContext.Provider>
     </BrowserRouter>
   );
 }
