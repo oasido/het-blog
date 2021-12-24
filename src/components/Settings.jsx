@@ -24,7 +24,7 @@ const Settings = () => {
     const formData = new FormData();
     formData.append('avatar', file);
 
-    fetch('/upload', {
+    fetch('/settings/avatar-upload', {
       method: 'POST',
       body: formData,
     });
