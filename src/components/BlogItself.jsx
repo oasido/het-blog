@@ -27,13 +27,13 @@ const BlogItself = () => {
     <div className="post">
       {error && <NotFound />}
       {isLoading && (
-        <div>
+        <div className="center">
           <ReactLoading className="loading" color="#000" type="spin" />
           <div className="loading">Loading, please wait...</div>
         </div>
       )}
-      <div className="post-details">
-        {blog && (
+      {blog && (
+        <div className="post-details">
           <article>
             <div className="top-bar">
               <a href={'/u/' + blog.author}>
@@ -57,8 +57,8 @@ const BlogItself = () => {
             <h2 className="blog-description">{blog.description}</h2>
             <p className="line-break blog-body">{blog.body}</p>
           </article>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
