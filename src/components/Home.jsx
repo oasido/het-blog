@@ -1,4 +1,3 @@
-// import { useEffect } from 'react';
 import ReactLoading from 'react-loading';
 import BlogList from './BlogList';
 import useFetch from './useFetch';
