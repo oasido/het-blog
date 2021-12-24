@@ -45,7 +45,7 @@ const Create = () => {
 
         {!isAddingBlog && (
           <button className="create-post" type="submit">
-            Create Post
+            Publish
           </button>
         )}
         {isAddingBlog && (
