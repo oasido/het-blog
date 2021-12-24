@@ -12,9 +12,7 @@ function Navbar() {
     <div className="Navbar">
       <nav className="navbar">
         <Link to="/">
-          {/* <a href="/"> */}
           <h1>HET BLOG</h1>
-          {/* </a> */}
         </Link>
 
         <div className="links">
