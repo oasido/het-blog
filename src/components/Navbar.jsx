@@ -24,7 +24,7 @@ function Navbar() {
             </Link>
           )}
           <div className="dropdown">
-            <>{isAuthenticated ? <ProfilePicture className="author-picture" src={profilePicture} /> : '☰'}</>
+            <>{isAuthenticated ? <ProfilePicture className="author-picture" src={`/${profilePicture}`} /> : '☰'}</>
             <div className="dropdown-content">
               {!isAuthenticated && <Link to="/login">Login</Link>}
               {!isAuthenticated && <Link to="/register">Register</Link>}
