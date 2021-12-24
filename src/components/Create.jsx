@@ -12,7 +12,7 @@ const Create = () => {
   const navigate = useNavigate();
 
   if (!isAuthenticated) {
-    window.location.href = '/';
+    navigate('/');
   }
 
   const handleAddBlog = (e) => {
