@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { UserContext } from './UserContext';
 import { useNavigate } from 'react-router-dom';
 import ProfilePicture from './ProfilePicture';
 import axios from 'axios';
 
-const Settings = ({ user }) => {
+const Settings = () => {
+  const user = useContext(UserContext);
   const navigate = useNavigate();
   const { isAuthenticated, userID } = user;
 

@@ -1,11 +1,13 @@
-import { useNavigate, useParams } from 'react-router';
-import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useContext } from 'react';
 import useFetch from './useFetch';
 import ProfilePicture from './ProfilePicture';
 import ReactLoading from 'react-loading';
 import NotFound from './NotFound';
+import { UserContext } from './UserContext';
 
-const BlogItself = ({ user }) => {
+const BlogItself = () => {
+  const user = useContext(UserContext);
   const { isAuthenticated, username } = user;
   const { id } = useParams();
   const { data: blog, isLoading, error } = useFetch('/api/blogs/' + id);

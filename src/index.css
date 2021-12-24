@@ -351,6 +351,10 @@ a:active {
   font-family: 'Segoe UI Semibold';
 }
 
+.top-bar:hover div {
+  color: #eeeeee;
+}
+
 .blog-pin {
   color: yellow;
   margin-left: auto;
@@ -362,7 +366,7 @@ a:active {
 }
 
 .author-picture {
-  border-radius: 45%;
+  border-radius: 50%;
   width: 2.5rem;
   height: 2.5rem;
   display: inline-block;
@@ -371,9 +375,9 @@ a:active {
 }
 
 .user-avatar {
-  border-radius: 45%;
+  border-radius: 50%;
   width: 3rem;
-  height: 3rem;
+  height: 100%;
   display: inline-block;
   vertical-align: bottom;
 }

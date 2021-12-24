@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from './UserContext';
 
-const Create = ({ user }) => {
+const Create = () => {
+  const user = useContext(UserContext);
   const { isAuthenticated, email, username: author, userID: authorID } = user;
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');

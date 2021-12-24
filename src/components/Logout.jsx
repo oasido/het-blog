@@ -1,4 +1,8 @@
-const Logout = ({ user }) => {
+import { useContext } from 'react';
+import { UserContext } from './UserContext';
+
+const Logout = () => {
+  const user = useContext(UserContext);
   const { isAuthenticated } = user;
   if (isAuthenticated) {
     const postLogoutRequest = async () => {

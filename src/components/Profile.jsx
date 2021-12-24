@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ComponentLoader from './ComponentLoader';
 import ProfilePicture from './ProfilePicture';
 import NotFound from './NotFound';
 import { GoLocation, GoOrganization, GoMarkGithub } from 'react-icons/go';
 import { FaTwitter } from 'react-icons/fa';
+import { UserContext } from './UserContext';
 
-const Profile = ({ user }) => {
+const Profile = () => {
+  const user = useContext(UserContext);
   const { isAuthenticated, username } = user;
   const { username: usernameParams } = useParams();
   const [userID, setUserID] = useState(null);
