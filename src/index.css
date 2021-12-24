@@ -135,12 +135,6 @@ a:active {
 
 /* - */
 
-.loading {
-  padding: 1rem;
-  margin: 0 auto;
-  text-align: center;
-}
-
 /* post itself page */
 .post {
   background-color: rgb(36, 36, 36);
@@ -149,6 +143,7 @@ a:active {
   padding: 4rem;
   display: flex;
   margin: 0 auto;
+  justify-content: space-around;
 }
 
 .post-details {
@@ -180,6 +175,12 @@ a:active {
   margin: 1rem;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* create new blog form */
