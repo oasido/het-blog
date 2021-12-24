@@ -36,10 +36,14 @@ const BlogItself = () => {
         {blog && (
           <article>
             <div className="top-bar">
-              <ProfilePicture className="author-picture" src={`/profile-pictures/${blog.authorID}`} />
+              <a href={'/u/' + blog.author}>
+                <ProfilePicture className="author-picture" src={`/profile-pictures/${blog.authorID}`} />
+              </a>
               <div>
-                <p className="author-text">{blog.author}</p>
-                <p className="time-posted">{blog.date}</p>
+                <a href={'/u/' + blog.author}>
+                  <p className="author-text">{blog.author}</p>
+                  <p className="time-posted">{blog.date}</p>
+                </a>
               </div>
               {isAuthenticated && blog.author === username && (
                 <div className="remove-blog">
