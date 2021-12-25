@@ -37,7 +37,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import Profile from './components/Profile';
-import Settings from './components/Settings';
+import Settings from './components/Settings/Settings';
 import { UserContext } from './components/UserContext';
 
 function App() {
