@@ -44,12 +44,12 @@ const Create = () => {
         <textarea className="create-body" required placeholder="Write your post here..." rows="20" value={body} onChange={(e) => setBody(e.target.value)}></textarea>
 
         {!isAddingBlog && (
-          <button className="create-post" type="submit">
+          <button className="blue-btn" type="submit">
             Publish
           </button>
         )}
         {isAddingBlog && (
-          <button className="create-post" type="submit">
+          <button className="blue-btn" type="submit">
             Posting...
           </button>
         )}
