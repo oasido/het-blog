@@ -89,7 +89,16 @@ const Settings = () => {
 
   const saveHandler = async (e) => {
     e.preventDefault();
-    console.log('Saved');
+
+    const response = await fetch('/settings/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userFields),
+    });
+    const body = await response.json();
+    console.log(body);
   };
 
   return (
