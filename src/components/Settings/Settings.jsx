@@ -6,6 +6,14 @@ import axios from 'axios';
 import Input from './Input';
 
 const Settings = () => {
+  const [userFields, setUserFields] = useState({
+    email: '',
+    bio: '',
+    github: '',
+    twitter: '',
+    location: '',
+  });
+
   const user = useContext(UserContext);
   const navigate = useNavigate();
   const { isAuthenticated, userID } = user;
@@ -31,6 +39,54 @@ const Settings = () => {
     });
   };
 
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+
+    setUserFields((previousValue) => {
+      if (name === 'email') {
+        return {
+          email: value,
+          bio: previousValue.bio,
+          github: previousValue.github,
+          twitter: previousValue.twitter,
+          location: previousValue.location,
+        };
+      } else if (name === 'bio') {
+        return {
+          email: previousValue.email,
+          bio: value,
+          github: previousValue.github,
+          twitter: previousValue.twitter,
+          location: previousValue.location,
+        };
+      } else if (name === 'github') {
+        return {
+          email: previousValue.email,
+          bio: previousValue.bio,
+          github: value,
+          twitter: previousValue.twitter,
+          location: previousValue.location,
+        };
+      } else if (name === 'twitter') {
+        return {
+          email: previousValue.email,
+          bio: previousValue.bio,
+          github: previousValue.github,
+          twitter: value,
+          location: previousValue.location,
+        };
+      } else if (name === 'location') {
+        return {
+          email: previousValue.email,
+          bio: previousValue.bio,
+          github: previousValue.github,
+          twitter: previousValue.twitter,
+          location: value,
+        };
+      }
+    });
+  };
+
   const saveHandler = async (e) => {
     e.preventDefault();
     console.log('Saved');
@@ -51,11 +107,11 @@ const Settings = () => {
         <form onSubmit={saveHandler}>
           <label></label>
           <div className="settings-options">
-            <Input fieldName="Email" />
-            <Input fieldName="Bio" isTextArea={true} />
-            <Input fieldName="Github" />
-            <Input fieldName="Twitter" />
-            <Input fieldName="Location" />
+            <Input value={userFields.email} onChange={handleChange} name="email" fieldName="Email" />
+            <Input value={userFields.bio} onChange={handleChange} name="bio" fieldName="Bio" isTextArea={true} />
+            <Input value={userFields.github} onChange={handleChange} name="github" fieldName="Github" />
+            <Input value={userFields.twitter} onChange={handleChange} name="twitter" fieldName="Twitter" />
+            <Input value={userFields.location} onChange={handleChange} name="location" fieldName="Location" />
           </div>
           <button className="blue-btn" type="submit">
             Save
