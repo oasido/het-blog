@@ -411,10 +411,10 @@ article .top-bar:hover div {
 }
 
 .seperator {
-  width: 90%;
-  /* height: 50px; */
+  margin: 0.5rem auto;
+  width: 100%;
+  opacity: 70%;
   border-bottom: 2px solid #585858;
-  /* margin: -40px auto 10px; */
 }
 
 .sort-by {
