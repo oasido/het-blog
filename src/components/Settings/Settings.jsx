@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import ProfilePicture from '../ProfilePicture';
 import axios from 'axios';
 import Input from './Input';
+import FlashMsg from '../FlashMsg';
 
 const Settings = () => {
   const [userFields, setUserFields] = useState({
@@ -87,6 +88,7 @@ const Settings = () => {
     });
   };
 
+  const [profileResStatus, setProfileResStatus] = useState(null);
   const saveHandler = async (e) => {
     e.preventDefault();
 
@@ -97,8 +99,8 @@ const Settings = () => {
       },
       body: JSON.stringify(userFields),
     });
-    const body = await response.json();
-    console.log(body);
+    const { msg } = await response.json();
+    setProfileResStatus(true || false); // if server returns msg, set to true (success)
   };
 
   return (
@@ -122,9 +124,13 @@ const Settings = () => {
             <Input value={userFields.twitter} onChange={handleChange} name="twitter" fieldName="Twitter" />
             <Input value={userFields.location} onChange={handleChange} name="location" fieldName="Location" />
           </div>
-          <button className="blue-btn" type="submit">
-            Save
-          </button>
+          <div className="btn-and-response">
+            <button className="blue-btn" type="submit">
+              Save
+            </button>
+            {profileResStatus === true && <FlashMsg message="Successfully updated!" color="green" />}
+            {profileResStatus === false && <FlashMsg message="Something went wrong, please try again later..." color="red" />}
+          </div>
         </form>
       </div>
       <div className="settings">
