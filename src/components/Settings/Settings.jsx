@@ -123,7 +123,7 @@ const Settings = () => {
         <form onSubmit={saveHandler}>
           <label></label>
           <div className="settings-options">
-            <Input value={userFields.email} onChange={handleChange} name="email" fieldName="Email" />
+            <Input required value={userFields.email} onChange={handleChange} name="email" type="email" fieldName="Email" />
             <Input value={userFields.bio} onChange={handleChange} name="bio" fieldName="Bio" isTextArea={true} />
             <Input value={userFields.github} onChange={handleChange} name="github" fieldName="Github" />
             <Input value={userFields.twitter} onChange={handleChange} name="twitter" fieldName="Twitter" />
@@ -144,8 +144,8 @@ const Settings = () => {
           <label></label>
           <div className="settings-options">
             <Input type="password" fieldName="Current Password" />
-            <Input type="password" fieldName="Confirm Password" />
             <Input type="password" fieldName="New Password" />
+            <Input type="password" fieldName="New Password Confirmation" />
           </div>
           <button className="blue-btn" type="submit">
             Change Password
