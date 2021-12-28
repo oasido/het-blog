@@ -25,6 +25,7 @@
 // MINOR: Rearrange every component into subfolders
 // MINOR: Add minimum user/password length
 // MINOR: Ternary operator if DB is off
+// IDEA: User posts in their profiles, followers?
 
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
