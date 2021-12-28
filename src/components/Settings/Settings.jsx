@@ -51,6 +51,7 @@ const Settings = () => {
           github: previousValue.github,
           twitter: previousValue.twitter,
           location: previousValue.location,
+          userID,
         };
       } else if (name === 'bio') {
         return {
@@ -59,6 +60,7 @@ const Settings = () => {
           github: previousValue.github,
           twitter: previousValue.twitter,
           location: previousValue.location,
+          userID,
         };
       } else if (name === 'github') {
         return {
@@ -67,6 +69,7 @@ const Settings = () => {
           github: value,
           twitter: previousValue.twitter,
           location: previousValue.location,
+          userID,
         };
       } else if (name === 'twitter') {
         return {
@@ -75,6 +78,7 @@ const Settings = () => {
           github: previousValue.github,
           twitter: value,
           location: previousValue.location,
+          userID,
         };
       } else if (name === 'location') {
         return {
@@ -83,6 +87,7 @@ const Settings = () => {
           github: previousValue.github,
           twitter: previousValue.twitter,
           location: value,
+          userID: userID,
         };
       }
     });
