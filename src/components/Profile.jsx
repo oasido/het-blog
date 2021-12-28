@@ -12,7 +12,7 @@ const Profile = () => {
   const { isAuthenticated, username } = user;
   const { username: usernameParams } = useParams();
   const [userID, setUserID] = useState(null);
-  const [userAbout, setUserAbout] = useState(null);
+  const [userBio, setUserBio] = useState(null);
   const [userMemberSince, setUserMemberSince] = useState(null);
   const [userGithub, setUserGithub] = useState(null);
   const [userTwitter, setUserTwitter] = useState(null);
@@ -26,9 +26,9 @@ const Profile = () => {
           'Content-Type': 'application/json',
         },
       });
-      const { userID, about, memberSince, profilePicture, github, twitter, location } = await response.json();
+      const { userID, bio, memberSince, profilePicture, github, twitter, location } = await response.json();
       setUserID(userID);
-      setUserAbout(about);
+      setUserBio(bio);
       setUserGithub(github);
       setUserTwitter(twitter);
       setUserLocation(location);
@@ -41,6 +41,7 @@ const Profile = () => {
   }, []);
 
   const navigate = useNavigate();
+
   if (isAuthenticated) {
     console.log('logged in');
   }
@@ -54,8 +55,8 @@ const Profile = () => {
           </div>
           <div className="profile-content">
             <h1 className="profile-name">{usernameParams}</h1>
-            {userAbout ? (
-              <p>{userAbout}</p>
+            {userBio ? (
+              <p>{userBio}</p>
             ) : (
               <p>
                 <i>Hello world!</i>
