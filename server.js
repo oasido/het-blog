@@ -174,6 +174,25 @@ app.post('/settings/avatar-upload', upload.single('avatar'), async (req, res) =>
   }
 });
 
+app.post('/settings/save', async (req, res) => {
+  try {
+    const { email, bio, github, twitter, location, userID } = req.body;
+    const update = {
+      email,
+      bio,
+      location,
+      social: {
+        twitter,
+        github,
+      },
+    };
+    const profileSave = await User.findByIdAndUpdate(userID, update, { strict: false });
+    res.send({ msg: '200' });
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 app.post('/login', passport.authenticate('local'), (req, res) => {
   const username = req.user.username;
   res.send({ username });
