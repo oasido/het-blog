@@ -102,7 +102,7 @@ app.get('/api/user/:id', async (req, res) => {
       memberSince: user.memberSince,
       github,
       twitter,
-      about: user.about,
+      bio: user.bio,
       location: user.location,
     };
     res.send(userInfo);
