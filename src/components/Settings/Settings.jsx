@@ -189,10 +189,10 @@ const Settings = () => {
           <input onChange={fileHandler} type="file" name="avatar" />
           <button type="submit">Upload</button>
         </form>
-        <form onSubmit={saveHandler}>
+        <form onSubmit={profileSaveHandler}>
           <label></label>
           <div className="settings-options">
-            <Input required value={userFields.email} onChange={handleChange} name="email" type="email" fieldName="Email" />
+            <Input value={userFields.email} onChange={handleChange} name="email" type="email" fieldName="Email (not hidden)" />
             <Input value={userFields.bio} onChange={handleChange} name="bio" fieldName="Bio" isTextArea={true} />
             <Input value={userFields.github} onChange={handleChange} name="github" fieldName="Github" />
             <Input value={userFields.twitter} onChange={handleChange} name="twitter" fieldName="Twitter" />
