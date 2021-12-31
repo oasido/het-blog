@@ -80,6 +80,16 @@ app.get('/api/blogs', async (req, res) => {
   }
 });
 
+app.get('/api/user-posts/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const posts = await Blog.find({ author: id });
+    res.send(posts);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 app.get('/api/blogs/:id', async (req, res) => {
   try {
     const id = req.params.id;
