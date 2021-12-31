@@ -113,12 +113,12 @@ app.get('/api/user/:id', async (req, res) => {
 });
 
 app.post('/register', (req, res) => {
-  const { username, email, password, confirmPassword } = req.body;
+  const { username, password, confirmPassword } = req.body;
   if (password !== confirmPassword) {
     res.send({ error: { name: 'PassNoMatch', message: 'Passwords do not match' } });
   } else if (password === confirmPassword) {
     const date = new Date().toLocaleDateString('en-US');
-    User.register(new User({ username, email, memberSince: date, location: null, social: { github: null, twitter: null } }), password, (err) => {
+    User.register(new User({ username, email: '', memberSince: date, location: null, social: { github: null, twitter: null } }), password, (err) => {
       res.send({ error: err });
     });
   }

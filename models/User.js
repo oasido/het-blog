@@ -6,7 +6,7 @@ const User = new Schema({
   username: { type: String, required: true },
   bio: { type: String, required: false },
   profilePicture: { type: String, required: true, default: 'profile-pictures/default.png' },
-  email: { type: String, required: true },
+  email: { type: String },
   social: {
     github: String,
     twitter: String,
