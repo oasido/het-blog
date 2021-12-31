@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../UserContext';
 import { useNavigate } from 'react-router-dom';
 import ProfilePicture from '../ProfilePicture';
@@ -7,6 +7,10 @@ import Input from './Input';
 import FlashMsg from '../FlashMsg';
 
 const Settings = () => {
+  const user = useContext(UserContext);
+  const { isAuthenticated, userID, username } = user;
+
+  // set fields automatically
   const [userFields, setUserFields] = useState({
     email: '',
     bio: '',
@@ -15,9 +19,22 @@ const Settings = () => {
     location: '',
   });
 
-  const user = useContext(UserContext);
+  useEffect(() => {
+    const getUser = async () => {
+      const response = await fetch('/api/user/' + username, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const { email, bio, github, twitter, location } = await response.json();
+      setUserFields({ email, bio, github, twitter, location });
+    };
+    getUser();
+
+    // eslint-disable-next-line
+  }, []);
+
   const navigate = useNavigate();
-  const { isAuthenticated, userID } = user;
 
   if (!isAuthenticated) {
     navigate('/');
