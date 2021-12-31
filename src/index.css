@@ -282,10 +282,11 @@ a:active {
 .dropdown {
   position: relative;
   display: inline-block;
+  cursor: pointer;
 }
 
 .dropdown-content {
-  display: none;
+  /* display: none; */
   position: absolute;
   background-color: #f9f9f9;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -294,7 +295,7 @@ a:active {
   font-weight: bold;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown .dropdown-content {
   background-color: #383838;
   display: flex;
   position: absolute;
@@ -308,6 +309,10 @@ a:active {
   text-decoration: none;
   color: rgb(189, 189, 189);
   padding: 1rem;
+}
+
+.hide {
+  display: none !important;
 }
 
 .dropdown .dropdown-content > p {
@@ -342,6 +347,7 @@ a:active {
 
 /* blog info */
 .top-bar {
+  user-select: none;
   display: flex;
   align-items: center;
   color: rgb(189, 189, 189);
@@ -496,4 +502,8 @@ form label,
   margin-left: 1rem;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: underline;
+}
+
+.profile-posts {
+  margin-top: 2rem;
 }
