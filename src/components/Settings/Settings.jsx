@@ -159,6 +159,24 @@ const Settings = () => {
     setProfileResStatus(true || false); // if server returns msg, set to true (success)
   };
 
+  const [passChangeResStatus, setPassChangeResStatus] = useState({
+    msg: '',
+    color: '',
+  });
+  const PasswordChangeHandler = async (e) => {
+    e.preventDefault();
+
+    const response = await fetch('/settings/change-password', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(passwordFields),
+    });
+    const { msg, color } = await response.json();
+    setPassChangeResStatus({ msg, color: color });
+  };
+
   return (
     <>
       <h1>User Settings</h1>
