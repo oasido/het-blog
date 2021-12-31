@@ -17,6 +17,12 @@ const User = new Schema({
   admin: { type: Boolean, required: true, default: false },
 });
 
-User.plugin(passportLocalMongoose);
+const options = {
+  errorMessages: {
+    IncorrectPasswordError: `Something's incorrect!`,
+  },
+};
+
+User.plugin(passportLocalMongoose, options);
 
 module.exports = mongoose.model('User', User);
