@@ -97,6 +97,7 @@ app.get('/api/user/:id', async (req, res) => {
     const { github, twitter } = user.social;
     const userInfo = {
       userID: user.id,
+      email: user.email,
       admin: user.admin,
       profilePicture: user.profilePicture,
       memberSince: user.memberSince,
