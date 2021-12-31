@@ -182,6 +182,33 @@ app.post('/settings/save', async (req, res) => {
   }
 });
 
+app.post('/settings/change-password', async (req, res) => {
+  try {
+    const { oldPassword, newPassword, confirmNewPassword, userID } = req.body;
+    const user = await User.findById(userID);
+
+    switch (true) {
+      case newPassword !== confirmNewPassword:
+        res.send({ msg: 'Passwords do not match', color: 'red' });
+        break;
+      case !oldPassword || !newPassword || !confirmNewPassword:
+        res.send({ msg: `Forgot to fill out something?`, color: 'red' });
+        break;
+      case oldPassword === newPassword:
+        res.send({ msg: `New password can't be the same`, color: 'red' });
+        break;
+      case newPassword === confirmNewPassword:
+        const passwordChange = await user.changePassword(oldPassword, newPassword);
+        res.send({ msg: 'Passwords changed successfully', color: 'green' });
+        break;
+      default:
+        break;
+    }
+  } catch (error) {
+    res.send({ msg: error.message, color: 'red' });
+  }
+});
+
 app.post('/login', passport.authenticate('local'), (req, res) => {
   const username = req.user.username;
   res.send({ username });
