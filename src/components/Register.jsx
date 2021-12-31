@@ -80,7 +80,7 @@ const Register = (props) => {
 
         <input name="username" className="form-field" type="text" placeholder="user" value={userFields.username} onChange={handleChange} />
 
-        <input name="email" className="form-field" type="email" placeholder="email" value={userFields.email} onChange={handleChange} />
+        {/* <input name="email" className="form-field" type="email" placeholder="email" value={userFields.email} onChange={handleChange} /> */}
 
         <input name="password" className="form-field" type="password" placeholder="password" value={userFields.password} onChange={handleChange} />
 
