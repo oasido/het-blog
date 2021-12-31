@@ -145,7 +145,7 @@ const Settings = () => {
   };
 
   const [profileResStatus, setProfileResStatus] = useState(null);
-  const saveHandler = async (e) => {
+  const profileSaveHandler = async (e) => {
     e.preventDefault();
 
     const response = await fetch('/settings/save', {
