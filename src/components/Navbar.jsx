@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ProfilePicture from './ProfilePicture';
 import { UserContext } from './UserContext';
@@ -9,28 +9,40 @@ function Navbar() {
   const user = useContext(UserContext);
   const { isAuthenticated, username, profilePicture } = user;
 
+  const [dropdownState, setDropdownState] = useState(false);
+  const handleDropdownClick = () => {
+    setDropdownState(!dropdownState);
+    console.log(dropdownState);
+  };
+
   return (
     <div className="Navbar">
       <nav className="navbar">
-        <Link to="/">
+        <Link onClick={() => {setDropdownState(false)}} to="/">
           <h1>HET BLOG</h1>
         </Link>
 
         <div className="links">
           {isAuthenticated && location.pathname !== '/create' && (
-            <Link to="/create" className="inverted">
+            <Link onClick={() => {setDropdownState(false)}} to="/create" className="inverted">
               Create Post
             </Link>
           )}
           <div className="dropdown">
-            <>{isAuthenticated ? <ProfilePicture className="author-picture" src={`/${profilePicture}`} /> : <GoThreeBars />}</>
-            <div className="dropdown-content">
-              {!isAuthenticated && <Link to="/login">Login</Link>}
-              {!isAuthenticated && <Link to="/register">Register</Link>}
+            <>
+              {isAuthenticated ? (
+                <ProfilePicture onClick={handleDropdownClick} className="author-picture" src={`/${profilePicture}`} />
+              ) : (
+                <GoThreeBars onClick={handleDropdownClick} />
+              )}
+            </>
+            <div className={dropdownState ? 'dropdown-content' : 'dropdown-content hide'}>
+              {!isAuthenticated && <Link onClick={() => {setDropdownState(false)}} to="/login">Login</Link>}
+              {!isAuthenticated && <Link onClick={() => {setDropdownState(false)}} to="/register">Register</Link>}
               {isAuthenticated && <p>@{username}</p>}
               {isAuthenticated && <div className="seperator" />}
-              {isAuthenticated && <Link to={'/u/' + username}>Profile</Link>}
-              {isAuthenticated && <Link to="/settings">Settings</Link>}
+              {isAuthenticated && <Link onClick={() => {setDropdownState(false)}} to={'/u/' + username}>Profile</Link>}
+              {isAuthenticated && <Link onClick={() => {setDropdownState(false)}} to="/settings">Settings</Link>}
               {isAuthenticated && <div className="seperator" />}
               {isAuthenticated && (
                 <a className="color-danger" href="/logout">
