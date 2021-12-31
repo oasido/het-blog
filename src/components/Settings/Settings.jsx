@@ -110,6 +110,40 @@ const Settings = () => {
     });
   };
 
+  const [passwordFields, setPasswordFields] = useState({
+    oldPassword: '',
+    newPassword: '',
+    confirmNewPassword: '',
+  });
+  const handlePasswordChange = (e) => {
+    const { value, name } = e.target;
+
+    setPasswordFields((previousValue) => {
+      if (name === 'oldPassword') {
+        return {
+          oldPassword: value,
+          newPassword: previousValue.newPassword,
+          confirmNewPassword: previousValue.confirmNewPassword,
+          userID: userID,
+        };
+      } else if (name === 'newPassword') {
+        return {
+          oldPassword: previousValue.oldPassword,
+          newPassword: value,
+          confirmNewPassword: previousValue.confirmNewPassword,
+          userID: userID,
+        };
+      } else if (name === 'confirmNewPassword') {
+        return {
+          oldPassword: previousValue.oldPassword,
+          newPassword: previousValue.newPassword,
+          confirmNewPassword: value,
+          userID: userID,
+        };
+      }
+    });
+  };
+
   const [profileResStatus, setProfileResStatus] = useState(null);
   const saveHandler = async (e) => {
     e.preventDefault();
