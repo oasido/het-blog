@@ -209,16 +209,19 @@ const Settings = () => {
       </div>
       <div className="settings">
         <h2>Change Password</h2>
-        <form>
+        <form onSubmit={PasswordChangeHandler}>
           <label></label>
           <div className="settings-options">
-            <Input type="password" fieldName="Current Password" />
-            <Input type="password" fieldName="New Password" />
-            <Input type="password" fieldName="New Password Confirmation" />
+            <Input value={passwordFields.oldPassword} onChange={handlePasswordChange} type="password" name="oldPassword" fieldName="Current Password" />
+            <Input value={passwordFields.newPassword} onChange={handlePasswordChange} type="password" name="newPassword" fieldName="New Password" />
+            <Input value={passwordFields.confirmNewPassword} onChange={handlePasswordChange} type="password" name="confirmNewPassword" fieldName="New Password Confirmation" />
           </div>
-          <button className="blue-btn" type="submit">
-            Change Password
-          </button>
+          <div className="btn-and-response">
+            <button className="blue-btn" type="submit">
+              Change Password
+            </button>
+            {<FlashMsg message={passChangeResStatus.msg} color={passChangeResStatus.color} />}
+          </div>
         </form>
       </div>
     </>
