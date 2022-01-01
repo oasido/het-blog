@@ -507,3 +507,18 @@ form label,
 .profile-posts {
   margin-top: 2rem;
 }
+
+@media screen and (max-width: 600px) {
+  .post {
+    padding: 2rem;
+  }
+
+  .settings-avatar-form {
+    width: 6rem;
+  }
+
+  .very-big {
+    width: 6rem;
+    height: 6rem;
+  }
+}
