@@ -54,7 +54,7 @@ app.use(
 );
 app.use(express.static('build'));
 
-mongoose.connect('mongodb://localhost/reactblog').catch((err) => console.log(err.reason));
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/reactblog').catch((err) => console.log(err.reason));
 
 // Passport-local-mongoose
 app.use(passport.session());
