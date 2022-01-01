@@ -33,7 +33,7 @@
 // IDEA: User posts in their profiles, followers?
 
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Create from './components/Create';
@@ -65,7 +65,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <UserContext.Provider value={user}>
         <div className="App">
           <Navbar />
@@ -84,7 +84,7 @@ function App() {
           </div>
         </div>
       </UserContext.Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
