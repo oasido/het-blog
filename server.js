@@ -52,6 +52,7 @@ app.use(
     saveUninitialized: true,
   })
 );
+app.use(express.static('build'));
 
 mongoose.connect('mongodb://localhost/reactblog').catch((err) => console.log(err.reason));
 
