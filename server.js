@@ -14,7 +14,6 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     try {
       const { id } = req.user;
-      console.log(req.user);
       cb(null, id);
     } catch (error) {
       console.error(error);
@@ -26,7 +25,7 @@ const fileFilter = (req, file, cb) => {
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
     cb(null, true);
   } else {
-    cb(console.log('Unsupported file type'), false);
+    cb(console.error('Unsupported file type'), false);
   }
 };
 

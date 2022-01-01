@@ -12,7 +12,6 @@ function Navbar() {
   const [dropdownState, setDropdownState] = useState(false);
   const handleDropdownClick = () => {
     setDropdownState(!dropdownState);
-    console.log(dropdownState);
   };
 
   return (
