@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import useFetch from './useFetch';
 import ProfilePicture from './ProfilePicture';
@@ -36,14 +36,14 @@ const BlogItself = () => {
         <div className="post-details">
           <article>
             <div className="top-bar">
-              <a href={'/u/' + blog.author}>
+              <Link to={'/u/' + blog.author}>
                 <ProfilePicture className="author-picture" src={`/profile-pictures/${blog.authorID}`} />
-              </a>
+              </Link>
               <div>
-                <a href={'/u/' + blog.author}>
+                <Link to={'/u/' + blog.author}>
                   <p className="author-text">{blog.author}</p>
                   <p className="time-posted">{blog.date}</p>
-                </a>
+                </Link>
               </div>
               {isAuthenticated && blog.author === username && (
                 <div className="remove-blog">

@@ -45,9 +45,9 @@ function Navbar() {
               {isAuthenticated && <Link onClick={() => {setDropdownState(false)}} to="/settings">Settings</Link>}
               {isAuthenticated && <div className="seperator" />}
               {isAuthenticated && (
-                <a className="color-danger" href="/logout">
+                <Link className="color-danger" to="/logout">
                   Log Out
-                </a>
+                </Link>
               )}
             </div>
           </div>
