@@ -1,6 +1,7 @@
 const express = require('express');
+require('dotenv').config();
 const mongoose = require('mongoose');
-var passport = require('passport');
+const passport = require('passport');
 const Blog = require('./models/Blog.js');
 const User = require('./models/User.js');
 const session = require('express-session');
