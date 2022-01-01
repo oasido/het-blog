@@ -7,7 +7,7 @@ const blogSchema = new Schema({
   body: { type: String, required: true },
   author: { type: String, required: true },
   authorID: { type: String, required: true },
-  email: { type: String, required: true },
+  email: { type: String, required: false },
   date: { type: String, required: true },
   pinned: { type: Boolean, required: true, default: false },
   likes: { type: Number, required: true, default: 0 },
