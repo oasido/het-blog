@@ -226,8 +226,12 @@ app.post('/login', passport.authenticate('local'), (req, res) => {
 });
 
 app.post('/logout', (req, res) => {
-  req.logout();
-  res.redirect('/');
+  try {
+    req.logout();
+    res.send('Logged out');
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 app.listen(port, () => {

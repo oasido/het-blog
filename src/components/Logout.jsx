@@ -5,12 +5,18 @@ const Logout = () => {
   const user = useContext(UserContext);
   const { isAuthenticated } = user;
   if (isAuthenticated) {
-    const postLogoutRequest = async () => {
-      await fetch('/logout', {
+    const postLogoutRequest = () => {
+      fetch('/logout', {
         method: 'POST',
-      });
+      }).then(
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 1000)
+      );
     };
-    postLogoutRequest().then((window.location.href = '/'));
+    postLogoutRequest();
+  } else {
+    window.location.href = '/';
   }
 
   return <div className="logout">Logging out...</div>;
