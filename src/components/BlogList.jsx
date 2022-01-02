@@ -18,7 +18,8 @@ function BlogList({ blogs }) {
       case e.target.innerText === 'New' && blogsOrder.title !== 'New':
         setBlogsOrder({ title: 'New', blogs: reversedBlogs });
         break;
-      default: // Do nothing
+      default:
+        break; // Do nothing
     }
   };
 
