@@ -29,7 +29,7 @@ Click here for a short video https://youtu.be/8urJIWFl-gw
 - [x] Add user settings page
 - [x] Posts by user (in profile)
 - [x] Basic mobile compatability
-- [ ] Upload button beautify + show errors
+- [ ] Upload button beautify + show errors & upload status
 - [ ] Likes feature
 - [ ] Add admin page where you can pin posts & manage users (maybe add canPost in user model)
 - [ ] Add markdown support for adding blogs, pictures in blog
