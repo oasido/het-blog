@@ -1,6 +1,6 @@
 
 # Het Blog / The Blog
-## (TO BE UPDATED!)
+### PLEASE NOTE: The development of this project has been paused until further notice.
 A simple and intuitive website where every registered user can post anything on their mind. Built with the MERN stack.
 
 ## Demo
