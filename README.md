@@ -1,11 +1,11 @@
-
+![image](https://github.com/oasido/het-blog/assets/8614095/0afe2211-9da7-4fde-8814-d61e65bad145)
 # Het Blog / The Blog
 ### PLEASE NOTE: The development of this project has been paused until further notice.
 A simple and intuitive website where every registered user can post anything on their mind. Built with the MERN stack.
 
 ## Demo
 
-Live demo at http://het-blog.ofekasido.xyz/
+Live demo was shutdown on the 31st of August 2023
 
 Click here for a short video https://youtu.be/8urJIWFl-gw
 
